@@ -1,0 +1,8 @@
+﻿soportar otros tipos de datos??
+Dialogs de carpeta y dic
+exportador a csv
+labels con > 2000 valores impide "custom tables"
+
+OK hacer un buscador optimista de secuencias de entidades
+OK test censo 2001
+OK poner botones de "abrir" y "guardar como"??
