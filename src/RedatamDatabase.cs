@@ -153,6 +153,7 @@ namespace RedatamConverter
 
 			v.ParseDeclaration();
 			v.ParseValueLabels();
+			v.ParseMissingAndPrecision();
 			return v;
 		}
 	

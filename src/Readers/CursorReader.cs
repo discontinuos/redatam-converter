@@ -37,11 +37,19 @@ namespace RedatamConverter
 			stream.Read(bytes, 0, BlockSize);
 			return System.Text.Encoding.Default.GetString(bytes);
 		}
-		public long ReadNumber()
+		public double ReadDouble()
+		{
+			byte[] bytes = new byte[8];
+			for(int i = 0; i < 8; i++)
+				bytes[i] = (byte) ReadByte();
+			double ret = BitConverter.ToDouble(bytes, 0);
+			return ret;
+		}
+		public ulong ReadNumber()
 		{
 			// lee de a bloques de bits
 			int bitsRead = 0;
-			long data = 0;
+			ulong data = 0;
 			// lee el siguiente byte
 			data = feedBits(data, ref bitsRead);
 			while (bitsRead < BlockSize)
@@ -54,7 +62,7 @@ namespace RedatamConverter
 			return data;
 		}
 
-		private long feedBits(long data, ref int bitsRead)
+		private ulong feedBits(ulong data, ref int bitsRead)
 		{
 			while (bitsRead < BlockSize && trailingBitsCount > 0)
 			{

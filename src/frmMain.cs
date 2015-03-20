@@ -137,13 +137,18 @@ namespace RedatamConverter
 		{
 			lwVariables.Items.Clear();
 			lwLabels.Items.Clear();
-			
 			if (db == null) return;
 			if (lwEntities.SelectedItems.Count == 0) return ;
 			Entity entity = lwEntities.SelectedItems[0].Tag as Entity;
 			if (entity == null)
 				return;
 
+			FillVariablesListView(entity);
+			SelectFirst(lwVariables);
+		}
+
+		private void FillVariablesListView(Entity entity)
+		{
 			if (lwVariables.Columns.Count < 3)
 			{
 				CreateColumns();
@@ -156,7 +161,12 @@ namespace RedatamConverter
 				{
 					if (this.skipColumns.Contains(fi.Name) == false)
 					{
-						string value = fi.GetValue(v) as string;
+						object val = fi.GetValue(v);
+						string value;
+						if (val != null)
+							value = val.ToString();
+						else
+							value = "";
 						if (item.Text == "")
 							item.Text = value;
 						else
@@ -165,7 +175,6 @@ namespace RedatamConverter
 				}
 				lwVariables.Items.Add(item);
 			}
-			SelectFirst(lwVariables);
 		}
 
 		private void CreateColumns()

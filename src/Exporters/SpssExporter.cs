@@ -69,6 +69,10 @@ namespace RedatamConverter
 			{
 				var = CreateNumericVariable(v);
 			}
+			else if (v.Type == "REAL")
+			{
+				var = CreateNumericVariable(v);
+			}
 			else
 				throw new Exception("Unsupported type: " + v.Type);
 
@@ -82,6 +86,7 @@ namespace RedatamConverter
 		{
 			SpssVariable var;
 			SpssNumericVariable var1 = new SpssNumericVariable();
+			var1.PrintDecimal = v.Decimals;
 			foreach (var item in v.ValueLabels)
 			{
 				long key = long.Parse(item.Key);

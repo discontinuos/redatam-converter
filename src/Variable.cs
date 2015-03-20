@@ -25,6 +25,7 @@ namespace RedatamConverter
 		public string Label;
 		public string Type;
 		public string Range;
+		public int Decimals;
 		public string Declaration;
 		public string Group;
 		public string ValuesLabelsRaw;
@@ -45,10 +46,16 @@ namespace RedatamConverter
 					item.Substring(0, i),
 					item.Substring(i+1)  ));
 			}
-			// se fija si hay missing y na
-			string extras = this.Group.Trim();
-			extras = GetMissingLabel(extras, "MISSING");
-			extras = GetMissingLabel(extras, "NOTAPPLICABLE");
+		}
+
+		private void ParseDecimals(string extras)
+		{
+			if (extras.StartsWith("DECIMALS "))
+			{
+				string label = eatStringFromString(ref extras);
+				string value = eatStringFromString(ref extras);
+				this.Decimals = int.Parse(value);
+			}
 		}
 
 		private string GetMissingLabel(string extras, string tag)
@@ -82,10 +89,17 @@ namespace RedatamConverter
 
 		internal object GetData()
 		{
-			if (Type == "STRING")
-				return reader.ReadString();
-			else
-				return reader.ReadNumber();
+			switch (Type)
+			{
+				case "STRING":
+					return reader.ReadString();
+				case "INTEGER":
+					return reader.ReadNumber();
+				case "REAL":
+					return reader.ReadDouble();
+				default:
+					throw new Exception("Unsupported data type: " + Type);
+			}
 		}
 
 		public void ParseDeclaration()
@@ -98,7 +112,12 @@ namespace RedatamConverter
 			string size = eatStringFromString(ref info);
 			if (this.Type == "STRING" && type != "CHR")
 				throw new Exception("Inconsistent type declaration");
-			this.Size = int.Parse(size);
+			if (this.Type == "REAL" && type != "DBL")
+				throw new Exception("Inconsistent type declaration");
+			if (type == "DBL")
+				this.Size = 64;
+			else
+				this.Size = int.Parse(size);
 			this.Filename = fileRaw;
 		}
 		internal void OpenData()
@@ -115,5 +134,13 @@ namespace RedatamConverter
 			reader.Close();
 		}
 
+		internal void ParseMissingAndPrecision()
+		{
+			// se fija si hay missing y na
+			string extras = this.Group.Trim();
+			extras = GetMissingLabel(extras, "MISSING");
+			extras = GetMissingLabel(extras, "NOTAPPLICABLE");
+			ParseDecimals(extras);
+		}
 	}
 }
