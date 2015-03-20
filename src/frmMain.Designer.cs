@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.lwEntities = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.lwVariables = new System.Windows.Forms.ListView();
@@ -37,13 +38,13 @@
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.folderTo = new System.Windows.Forms.Label();
 			this.lblFile = new System.Windows.Forms.Label();
 			this.btnSaveData = new System.Windows.Forms.Button();
 			this.btnOpen = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.folderTo = new System.Windows.Forms.Label();
 			this.btnCopyEntities = new System.Windows.Forms.Button();
 			this.btnCopyVariables = new System.Windows.Forms.Button();
 			this.btnCopyLabels = new System.Windows.Forms.Button();
@@ -141,6 +142,15 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Actions";
 			// 
+			// folderTo
+			// 
+			this.folderTo.AutoSize = true;
+			this.folderTo.Location = new System.Drawing.Point(128, 53);
+			this.folderTo.Name = "folderTo";
+			this.folderTo.Size = new System.Drawing.Size(16, 13);
+			this.folderTo.TabIndex = 5;
+			this.folderTo.Text = "...";
+			// 
 			// lblFile
 			// 
 			this.lblFile.AutoSize = true;
@@ -199,15 +209,6 @@
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Entities:";
 			// 
-			// folderTo
-			// 
-			this.folderTo.AutoSize = true;
-			this.folderTo.Location = new System.Drawing.Point(128, 53);
-			this.folderTo.Name = "folderTo";
-			this.folderTo.Size = new System.Drawing.Size(16, 13);
-			this.folderTo.TabIndex = 5;
-			this.folderTo.Text = "...";
-			// 
 			// btnCopyEntities
 			// 
 			this.btnCopyEntities.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -256,6 +257,7 @@
 			this.Controls.Add(this.lwLabels);
 			this.Controls.Add(this.lwVariables);
 			this.Controls.Add(this.lwEntities);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "frmMain";
 			this.Text = "REDATAM Converter";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
