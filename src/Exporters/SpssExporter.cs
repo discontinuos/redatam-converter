@@ -93,6 +93,8 @@ namespace RedatamConverter
 				if (var1.ValueLabels.ContainsKey(key) == false)
 					var1.ValueLabels.Add(key, item.Value);
 			}
+			if (v.ValueLabels.Count > 0)
+				var1.MeasurementLevel = MeasurementLevelCode.SPSS_MLVL_NOM;
 			var = var1;
 			return var;
 		}
