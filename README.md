@@ -1,19 +1,21 @@
 ﻿# redatam-converter
 Aplicación para extraer información de base de REDATAM
 
-RedatamConverter es un proyecto de código abierto que permite parcialmente leer bases de Redatam para permtir la exportación de sus microdatos. Fue creado para poder recuperar microdatos de modo de poder realizar análisis estadísticas trabajos de obtener por medio de exportaciones de Redatam, tales que medidas de dispersión, análisis de correlaciones, regresiones logísticas.
+RedatamConverter es un proyecto de código abierto que permite leer bases de Redatam para exportar sus microdatos. Fue creado para poder recuperar información de base de REDATAM para realizar análisis estadísticas con herramientas estándar de análisis estadístico (SPSS, STATA, R, etc).
 
 # COMPATIBILIDAD
 
-El conversor fue probado con bases de Redatam en diferentes versiones, intentando ser compatible con cambios que pudieran haber ocurrido en el tiempo. La prueba más antigua se realizó con una base que se distribuyó junto con Redatam 2.3.0.5 (Censo 2001 Argentina), mientras que la más reciente fue una versión 2.5.7.0 (Censo 2010 Argentina).
+El conversor fue probado con bases de REDATAM en diferentes versiones, intentando ser compatible con cambios que pudieran haber ocurrido en el tiempo. La prueba más antigua se realizó con una base que se distribuyó junto con REDATAM  2.3.0.5 (Censo 2001 Argentina), mientras que la más reciente fue una versión 2.5.7.0 (Censo 2010 Argentina).
 
 # LIMITACIONES
 
-La versión actual soporte variables de tipo texto (STRING) y de tipo enteros (INTEGER).
+La versión actual exporta a formato SPSS nativo. Están pendientes los exportadores a formatos menos propietarios (CVS y DBFs). El formato REDATAM no se encuentra oficialmente documentado, por lo que el parseo se basa en suposiciones sobre su estructura. Los resultados que de ellos se deriven deben ser chequeados y usados bajo responsabilidad de quien lo utilice.
 
 # REQUISITOS DE INSTALACION AUTOMATICA
 
-Se puede realizar una instalación de la herramienta ejecutando el instalador contenido en /release/setup.exe.
+Se puede realizar una instalación de la herramienta ejecutando el instalador. El mismo se encuentra disponible en:
+
+http://share.myflare.com/y8D5NX.
 
 # REQUISITOS DE INSTALACION MANUAL
 
