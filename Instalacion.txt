@@ -4,7 +4,7 @@ RedatamConverter es un proyecto de código abierto que permite leer bases de Reda
 
 COMPATIBILIDAD
 
-El conversor fue probado con bases de Redatam en diferentes versiones, intentando ser compatible con cambios que pudieran haber ocurrido en el tiempo. La prueba más antigua se realizó con una base que se distribuyó junto con Redatam 2.3.0.5 (Censo 2001 Argentina), mientras que la más reciente fue una versión 2.5.7.0 (Censo 2010 Argentina).
+El conversor fue probado con bases de Redatam en diferentes versiones, intentando ser compatible con cambios que pudieran haber ocurrido en el tiempo. La prueba más antigua se realizó con una base que se distribuyó junto con Redatam 2.3.0.5 (año 2003) mientras que la más reciente fue una versión 2.5.7.0 (año 2012).
 
 LIMITACIONES
 
