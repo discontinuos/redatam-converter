@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
 using Spss;
@@ -12,74 +11,43 @@ namespace RedatamConverter
 		public SpssExporter(RedatamDatabase dbr)
 			: base(dbr)
 		{ }
-		
-		protected override void CopyVariablesData(SpssDataDocument doc, string id, string parentId, Entity e, int n, int currentParent)
-		{
-			SpssCase case1 = doc.Cases.New();
-			// pone su id
-			case1[id] = n;
-			if (parentId != "")
-				case1[parentId] = currentParent;
-
-			// pone el valor de cada variable
-			foreach (Variable v in e.Variables)
-			{
-				case1[v.Name] = v.GetData();
-			}
-			case1.Commit();
-		}
 
 		protected override SpssDataDocument CreateTable(string folder, Entity e)
 		{
-			string filename = CreateFilename(folder, e.Name);
+			string filename = CreateFilename(folder, e.Name, "sav");
 			SpssDataDocument doc = SpssDataDocument.Create(filename);
 			return doc;
 		}
-
-		protected override void CreateIdVariables(Entity parent, Entity e, SpssDataDocument doc)
+		protected override void BeginDataWrite(SpssDataDocument doc)
 		{
-			var var = CreateVariable(new Variable(MakeId(e), "INTEGER", "Identifier for " + e.Name));
-			doc.Variables.Add(var);
-			if (parent != null)
-			{
-				var = CreateVariable(new Variable(MakeId(parent), "INTEGER", "Parent entity Id"));
-				doc.Variables.Add(var);
-			}
+			doc.CommitDictionary();
 		}
-		protected override void CloseTable(SpssDataDocument table)
+		protected override void CloseTable(SpssDataDocument doc)
 		{
-			table.Close();
-		}
-		protected override string MakeId(Entity e)
-		{
-			if (e == null)
-				return "";
-			else
-				return e.Name + "_REF_ID";
+			doc.Close();
 		}
 
-		private SpssVariable CreateVariable(Variable v)
+		protected override void CreateVariable(SpssDataDocument doc, Variable v)
 		{
 			SpssVariable var;
-			if (v.Type == "STRING")
+			switch (v.Type)
 			{
-				var = CreateStringVariable(v);
+				case "STRING":
+					var = CreateStringVariable(v);
+					break;
+				case "INTEGER":
+					var = CreateNumericVariable(v);
+					break;
+				case "REAL":
+					var = CreateNumericVariable(v);
+					break;
+				default:
+					throw new Exception("Unsupported type: " + v.Type);
 			}
-			else if (v.Type == "INTEGER")
-			{
-				var = CreateNumericVariable(v);
-			}
-			else if (v.Type == "REAL")
-			{
-				var = CreateNumericVariable(v);
-			}
-			else
-				throw new Exception("Unsupported type: " + v.Type);
-
 			var.Name = v.Name;
 			var.Label = v.Label;
 
-			return var;
+			doc.Variables.Add(var);
 		}
 
 		private SpssVariable CreateNumericVariable(Variable v)
@@ -109,14 +77,14 @@ namespace RedatamConverter
 			return var1;
 		}
 
-	  protected override void CreateMetaData(List<Variable> list, SpssDataDocument doc)
+		protected override void WriteVariablesData(SpssDataDocument doc, Dictionary<string, object> data)
 		{
-			foreach (Variable v in list)
-			{
-				SpssVariable var = CreateVariable(v);
-				doc.Variables.Add(var);
-			}
-			doc.CommitDictionary();
+			SpssCase case1 = doc.Cases.New();
+
+			foreach (var pair in data)
+				case1[pair.Key] = pair.Value;
+
+			case1.Commit();
 		}
 
 	}

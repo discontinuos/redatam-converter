@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace RedatamConverter
 {
@@ -16,6 +17,7 @@ namespace RedatamConverter
 	public partial class frmMain : Form
 	{
 		RedatamDatabase db;
+		Type exporterType;
 		long totalRows;
 		DateTime startTime;
 		string folder;
@@ -24,6 +26,11 @@ namespace RedatamConverter
 		List<string> skipColumns = new List<string>() { "ValuesLabelsRaw", "ValuesLabels" };
 		bool cancelled = false;
 		cStatus status = new cStatus();
+
+		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+		[return: MarshalAs(UnmanagedType.Bool)]
+		public static extern bool GetDiskFreeSpaceEx(string lpDirectoryName, out ulong lpFreeBytesAvailable,		out ulong lpTotalNumberOfBytes,		out ulong lpTotalNumberOfFreeBytes);
+
 
 		public frmMain()
 		{
@@ -77,7 +84,8 @@ namespace RedatamConverter
 			// Parse de entidades y variables
 			try
 			{
-				db.Parse(file);
+				EntityParser parser = new EntityParser(db);
+				parser.Parse(file);
 			}
 			catch (Exception e)
 			{
@@ -89,7 +97,13 @@ namespace RedatamConverter
 			{
 				FillEntitiesListView();
 			}
-			btnSaveData.Enabled = true;
+			EnableSaveButtons(true);
+		}
+
+		private void EnableSaveButtons(bool value)
+		{
+			btnSaveSPSS.Enabled = value;
+			btnSaveCSV.Enabled = value;
 		}
 		void status_CancelClick(object sender, EventArgs e)
 		{
@@ -226,12 +240,12 @@ namespace RedatamConverter
 		public void updateProgress(object sender, EventArgs e)
 		{
 			// actualiza con estimado de tiempo y de filas...
-			SpssExporter exporter = (SpssExporter)sender;
+			IExporter exporter = (IExporter)sender;
 			status.lblEntity.Text = exporter.CurrentEntity;
 			status.lblRows.Text = MakeStatusLine(exporter.CurrentEntityTotal, exporter.EntityCurrentRow); ;
 			status.lblTotals.Text = MakeStatusLine(this.totalRows, exporter.GlobalCurrentRow);
 			double currentProgress = (exporter.GlobalCurrentRow / (double) this.totalRows);
-			TimeSpan remaining = TimeSpan.FromSeconds(((DateTime.Now - this.startTime).TotalSeconds / currentProgress));
+			TimeSpan remaining = TimeSpan.FromSeconds(((DateTime.Now - this.startTime).TotalSeconds / exporter.GlobalCurrentRow * this.totalRows));
 
 			status.lblEllapsed.Text = FormatTimeSpan(DateTime.Now - this.startTime, true);
 			status.lblRemaining.Text = FormatTimeSpan(remaining);
@@ -239,7 +253,34 @@ namespace RedatamConverter
 
 			if (cancelled)
 				exporter.Cancelled = true;
+			else
+			{
+				while (CheckSpace(folderTo.Text) == false)
+				{
+					if (MessageBox.Show(this, "Disk full (less than 1MB free). Not enough space to complete the export.", "Error", MessageBoxButtons.RetryCancel)
+						== System.Windows.Forms.DialogResult.Cancel)
+					{
+						throw new Exception("Cancelled. Disk full.");
+					}
+				}
+			}
 		}
+
+		private bool CheckSpace(string folder)
+		{
+			ulong FreeBytesAvailable;
+			ulong TotalNumberOfBytes;
+			ulong TotalNumberOfFreeBytes;
+			int n = folder.IndexOf("\\");
+			if (n == -1)
+				n = folder.IndexOf("/");
+			if (n == -1) return true;
+			string drive = folder.Substring(0, n);
+			bool success = GetDiskFreeSpaceEx(drive, out FreeBytesAvailable, out TotalNumberOfBytes,
+									 out TotalNumberOfFreeBytes);
+			return (FreeBytesAvailable > 1024 * 1024);
+		}
+
 
 		private string FormatTimeSpan(TimeSpan remaining, bool seconds = false)
 		{
@@ -273,7 +314,7 @@ namespace RedatamConverter
 		{
 			try
 			{
-				SpssExporter export = new SpssExporter(db);
+				IExporter export = Activator.CreateInstance(exporterType, db) as IExporter;
 				export.CallBack = new EventHandler(updateCallback);
 				export.SaveAs(folder);
 			}
@@ -315,16 +356,22 @@ namespace RedatamConverter
 		}
 		private void btnSaveData_Click(object sender, EventArgs e)
 		{
+			exporterType = typeof(SpssExporter);
+			ShowSaveDialog("SPSS");
+		}
+
+		private void ShowSaveDialog(string format)
+		{
 			FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
-			folderBrowserDialog1.Description = "Select the folder where SPSS data files will be saved.";
+			folderBrowserDialog1.Description = "Select the folder where " + format + " data files will be saved.";
 			if (folderBrowserDialog1.ShowDialog(this) == DialogResult.OK)
 			{
 				folderTo.Text = folderBrowserDialog1.SelectedPath;
-				SaveAsSpss(folderTo.Text);
+				SaveData(folderTo.Text);
 			}
 		}
 
-		private void SaveAsSpss(string targetFolder)
+		private void SaveData(string targetFolder)
 		{
 			ShowProgress();
 			EnableForm(false);
@@ -401,6 +448,12 @@ namespace RedatamConverter
 			}
 
 			Clipboard.SetText(buffer.ToString());
+		}
+
+		private void btnSaveCSV_Click(object sender, EventArgs e)
+		{
+			exporterType = typeof(CSVExporter);
+			ShowSaveDialog("CSV");
 		}
 
 	}

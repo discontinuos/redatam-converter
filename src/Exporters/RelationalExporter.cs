@@ -1,39 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
-using Spss;
-using System.Runtime.InteropServices;
 
 
 namespace RedatamConverter
 {
-	abstract class RelationalExporter<T>
+	abstract class RelationalExporter<T>: IExporter
 	{
-		
 		RedatamDatabase db;
-		public int GlobalCurrentRow = 0;
 		
-		public EventHandler CallBack;
+		public EventHandler CallBack { get; set; }
 
-		public string CurrentEntity;
-		public long CurrentEntityTotal;
-		public long EntityCurrentRow;
-		public bool Cancelled;
+
+		public string CurrentEntity { get; set; }
+		public long CurrentEntityTotal { get; set; }
+		public long GlobalCurrentRow { get; set; }
+		public long EntityCurrentRow { get; set; }
+		public bool Cancelled { get; set; }
+
 		public string Folder;
-		protected abstract void CopyVariablesData(T doc, string id, string parentId, Entity e, int n, int currentParent);
-		protected abstract void CreateMetaData(List<Variable> list, T doc);
-		protected abstract void CreateIdVariables(Entity parent, Entity e, T doc);
+		protected abstract void WriteVariablesData(T doc, Dictionary<string, object> data);
+		protected abstract void BeginDataWrite(T doc);
+		protected abstract void CreateVariable(T doc, Variable v);
+		
 		protected abstract void CloseTable(T table);
 		protected abstract T CreateTable(string folder, Entity e);
-		protected abstract string MakeId(Entity e);
 
 		public RelationalExporter(RedatamDatabase dbr)
 		{
 			db = dbr;
 		}
 		
+
 		public void SaveAs(string folder)
 		{
 			Folder = folder;
@@ -41,15 +40,12 @@ namespace RedatamConverter
 			Entity parent = null;
 			foreach (Entity e in db.Entities)
 			{
-				CreateFilename(folder, e.Name);
-			}
-			foreach (Entity e in db.Entities)
-			{
 				CurrentEntity = e.Name;
 				T doc = CreateTable(folder, e);
 
 				CreateIdVariables(parent, e, doc);
-				CreateMetaData(e.Variables, doc);
+				CreateDataVariables(e.Variables, doc);
+				BeginDataWrite(doc);
 				try
 				{
 					CreateData(e, parent, doc);
@@ -81,7 +77,9 @@ namespace RedatamConverter
 			{
 				AdvanceParentId(e, parentId, ref currentParent, ref parentLimit, n);
 
-				CopyVariablesData(doc, id, parentId, e, n, currentParent);
+				var data = PrepareVariablesData(id, parentId, e, n, currentParent);
+
+				WriteVariablesData(doc, data);
 
 				GlobalCurrentRow++;
 				EntityCurrentRow++;
@@ -94,8 +92,6 @@ namespace RedatamConverter
 						CloseVariablesData(e, parentEntity);
 						throw new Exception("Cancelled.");
 					}
-					if (CheckSpace() == false)
-						throw new Exception("Disk full (less than 1MB free). Not enough space to complete the export.");
 				}
 				n++;
 			}
@@ -103,19 +99,39 @@ namespace RedatamConverter
 			CloseVariablesData(e, parentEntity);
 		}
 
-		private bool CheckSpace()
+		protected Dictionary<string, object> PrepareVariablesData(string id, string parentId, Entity e, int n, int currentParent)
 		{
-			ulong FreeBytesAvailable;
-			ulong TotalNumberOfBytes;
-			ulong TotalNumberOfFreeBytes;
-			int n = Folder.IndexOf("\\");
-			if (n == -1)
-				n = Folder.IndexOf("/");
-			if (n == -1) return true;
-			string drive = Folder.Substring(0, n);
-			bool success = RedatamDatabase.GetDiskFreeSpaceEx(drive, out FreeBytesAvailable, out TotalNumberOfBytes,
-									 out TotalNumberOfFreeBytes);
-			return (FreeBytesAvailable > 1024 * 1024);
+			Dictionary<string, object> ret = new Dictionary<string, object>();
+			// pone su id
+			ret[id] = n;
+			if (parentId != "")
+				ret[parentId] = currentParent;
+
+			// pone el valor de cada variable
+			foreach (Variable v in e.Variables)
+			{
+				ret[v.Name] = v.GetData();
+			}
+			return ret;
+		}
+		protected void CreateIdVariables(Entity parent, Entity e, T doc)
+		{
+			CreateVariable(doc, new Variable(MakeId(e), "INTEGER", "Identifier for " + e.Name));
+			if (parent != null)
+				CreateVariable(doc, new Variable(MakeId(parent), "INTEGER", "Parent entity Id"));
+		}
+		protected void CreateDataVariables(List<Variable> list, T doc)
+		{
+			foreach (Variable v in list)
+				CreateVariable(doc, v);
+		}
+
+		protected string MakeId(Entity e)
+		{
+			if (e == null)
+				return "";
+			else
+				return e.Name + "_REF_ID";
 		}
 
 		private static void AdvanceParentId(Entity parentEntity, string parentId, ref int currentParent, ref int parentLimit, int n)
@@ -149,9 +165,9 @@ namespace RedatamConverter
 		}
 
 
-		protected string CreateFilename(string folder, string file)
+		protected string CreateFilename(string folder, string file, string extension)
 		{
-			string ret = Path.Combine(folder, file) + ".sav";
+			string ret = Path.Combine(folder, file) + "." + extension;
 			if (File.Exists(ret)) File.Delete(ret);
 			return ret;
 		}

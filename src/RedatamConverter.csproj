@@ -57,14 +57,18 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="todo.txt" />
+    <Compile Include="Exporters\IExporter.cs" />
+    <Compile Include="Exporters\CSVDoc.cs" />
+    <Compile Include="Exporters\CSVExporter.cs" />
     <Compile Include="Readers\FuzzyEntityParser.cs" />
     <Compile Include="Readers\CursorReader.cs" />
     <Compile Include="Exporters\RelationalExporter.cs" />
     <Compile Include="Exporters\DbfExporter.cs" />
     <Compile Include="Exporters\SpssExporter.cs" />
     <Compile Include="Readers\DataBlock.cs" />
-    <Compile Include="RedatamDatabase.cs" />
-    <Compile Include="Entity.cs" />
+    <Compile Include="Readers\EntityParser.cs" />
+    <Compile Include="Entities\RedatamDatabase.cs" />
+    <Compile Include="Entities\Entity.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,7 +83,7 @@
     <Compile Include="cStatus.Designer.cs">
       <DependentUpon>cStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="Variable.cs" />
+    <Compile Include="Entities\Variable.cs" />
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

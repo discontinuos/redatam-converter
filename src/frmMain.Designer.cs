@@ -40,7 +40,7 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.folderTo = new System.Windows.Forms.Label();
 			this.lblFile = new System.Windows.Forms.Label();
-			this.btnSaveData = new System.Windows.Forms.Button();
+			this.btnSaveSPSS = new System.Windows.Forms.Button();
 			this.btnOpen = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
 			this.btnCopyEntities = new System.Windows.Forms.Button();
 			this.btnCopyVariables = new System.Windows.Forms.Button();
 			this.btnCopyLabels = new System.Windows.Forms.Button();
+			this.btnSaveCSV = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -61,7 +62,7 @@
 			this.lwEntities.HideSelection = false;
 			this.lwEntities.Location = new System.Drawing.Point(12, 36);
 			this.lwEntities.Name = "lwEntities";
-			this.lwEntities.Size = new System.Drawing.Size(175, 297);
+			this.lwEntities.Size = new System.Drawing.Size(175, 303);
 			this.lwEntities.TabIndex = 2;
 			this.lwEntities.UseCompatibleStateImageBehavior = false;
 			this.lwEntities.View = System.Windows.Forms.View.Details;
@@ -85,7 +86,7 @@
 			this.lwVariables.HideSelection = false;
 			this.lwVariables.Location = new System.Drawing.Point(202, 36);
 			this.lwVariables.Name = "lwVariables";
-			this.lwVariables.Size = new System.Drawing.Size(421, 128);
+			this.lwVariables.Size = new System.Drawing.Size(421, 134);
 			this.lwVariables.TabIndex = 2;
 			this.lwVariables.UseCompatibleStateImageBehavior = false;
 			this.lwVariables.View = System.Windows.Forms.View.Details;
@@ -110,7 +111,7 @@
             this.columnHeader4,
             this.columnHeader5});
 			this.lwLabels.FullRowSelect = true;
-			this.lwLabels.Location = new System.Drawing.Point(202, 203);
+			this.lwLabels.Location = new System.Drawing.Point(202, 209);
 			this.lwLabels.Name = "lwLabels";
 			this.lwLabels.Size = new System.Drawing.Size(421, 130);
 			this.lwLabels.TabIndex = 2;
@@ -133,9 +134,10 @@
 									| System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.Controls.Add(this.folderTo);
 			this.groupBox1.Controls.Add(this.lblFile);
-			this.groupBox1.Controls.Add(this.btnSaveData);
+			this.groupBox1.Controls.Add(this.btnSaveCSV);
+			this.groupBox1.Controls.Add(this.btnSaveSPSS);
 			this.groupBox1.Controls.Add(this.btnOpen);
-			this.groupBox1.Location = new System.Drawing.Point(12, 361);
+			this.groupBox1.Location = new System.Drawing.Point(12, 367);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(611, 82);
 			this.groupBox1.TabIndex = 3;
@@ -145,7 +147,7 @@
 			// folderTo
 			// 
 			this.folderTo.AutoSize = true;
-			this.folderTo.Location = new System.Drawing.Point(128, 53);
+			this.folderTo.Location = new System.Drawing.Point(235, 53);
 			this.folderTo.Name = "folderTo";
 			this.folderTo.Size = new System.Drawing.Size(16, 13);
 			this.folderTo.TabIndex = 5;
@@ -162,14 +164,14 @@
 			// 
 			// btnSaveData
 			// 
-			this.btnSaveData.Enabled = false;
-			this.btnSaveData.Location = new System.Drawing.Point(22, 48);
-			this.btnSaveData.Name = "btnSaveData";
-			this.btnSaveData.Size = new System.Drawing.Size(100, 23);
-			this.btnSaveData.TabIndex = 4;
-			this.btnSaveData.Text = "Save as SPSS data...";
-			this.btnSaveData.UseVisualStyleBackColor = true;
-			this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+			this.btnSaveSPSS.Enabled = false;
+			this.btnSaveSPSS.Location = new System.Drawing.Point(22, 48);
+			this.btnSaveSPSS.Name = "btnSaveData";
+			this.btnSaveSPSS.Size = new System.Drawing.Size(100, 23);
+			this.btnSaveSPSS.TabIndex = 4;
+			this.btnSaveSPSS.Text = "Save as SPSS...";
+			this.btnSaveSPSS.UseVisualStyleBackColor = true;
+			this.btnSaveSPSS.Click += new System.EventHandler(this.btnSaveData_Click);
 			// 
 			// btnOpen
 			// 
@@ -185,7 +187,7 @@
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(199, 187);
+			this.label1.Location = new System.Drawing.Point(199, 193);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(41, 13);
 			this.label1.TabIndex = 4;
@@ -212,7 +214,7 @@
 			// btnCopyEntities
 			// 
 			this.btnCopyEntities.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnCopyEntities.Location = new System.Drawing.Point(121, 334);
+			this.btnCopyEntities.Location = new System.Drawing.Point(121, 340);
 			this.btnCopyEntities.Name = "btnCopyEntities";
 			this.btnCopyEntities.Size = new System.Drawing.Size(66, 21);
 			this.btnCopyEntities.TabIndex = 5;
@@ -223,7 +225,7 @@
 			// btnCopyVariables
 			// 
 			this.btnCopyVariables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnCopyVariables.Location = new System.Drawing.Point(557, 165);
+			this.btnCopyVariables.Location = new System.Drawing.Point(557, 171);
 			this.btnCopyVariables.Name = "btnCopyVariables";
 			this.btnCopyVariables.Size = new System.Drawing.Size(66, 21);
 			this.btnCopyVariables.TabIndex = 6;
@@ -234,7 +236,7 @@
 			// btnCopyLabels
 			// 
 			this.btnCopyLabels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnCopyLabels.Location = new System.Drawing.Point(557, 334);
+			this.btnCopyLabels.Location = new System.Drawing.Point(557, 340);
 			this.btnCopyLabels.Name = "btnCopyLabels";
 			this.btnCopyLabels.Size = new System.Drawing.Size(66, 21);
 			this.btnCopyLabels.TabIndex = 6;
@@ -242,11 +244,22 @@
 			this.btnCopyLabels.UseVisualStyleBackColor = true;
 			this.btnCopyLabels.Click += new System.EventHandler(this.btnCopyLabels_Click);
 			// 
+			// btnSaveCSV
+			// 
+			this.btnSaveCSV.Enabled = false;
+			this.btnSaveCSV.Location = new System.Drawing.Point(128, 48);
+			this.btnSaveCSV.Name = "btnSaveCSV";
+			this.btnSaveCSV.Size = new System.Drawing.Size(100, 23);
+			this.btnSaveCSV.TabIndex = 4;
+			this.btnSaveCSV.Text = "Save as CSV...";
+			this.btnSaveCSV.UseVisualStyleBackColor = true;
+			this.btnSaveCSV.Click += new System.EventHandler(this.btnSaveCSV_Click);
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(635, 446);
+			this.ClientSize = new System.Drawing.Size(635, 452);
 			this.Controls.Add(this.btnCopyLabels);
 			this.Controls.Add(this.btnCopyVariables);
 			this.Controls.Add(this.btnCopyEntities);
@@ -283,7 +296,7 @@
 		private System.Windows.Forms.ColumnHeader columnHeader5;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label lblFile;
-		private System.Windows.Forms.Button btnSaveData;
+		private System.Windows.Forms.Button btnSaveSPSS;
 		private System.Windows.Forms.Button btnOpen;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -292,6 +305,7 @@
 		private System.Windows.Forms.Button btnCopyEntities;
 		private System.Windows.Forms.Button btnCopyVariables;
 		private System.Windows.Forms.Button btnCopyLabels;
+		private System.Windows.Forms.Button btnSaveCSV;
 	}
 }
 
