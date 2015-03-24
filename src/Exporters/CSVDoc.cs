@@ -8,7 +8,7 @@ namespace RedatamConverter
 {
 	class CSVDoc
 	{
-		const string delimiter = ",";
+		const string delimiter = ";";
 		const string quote = "\"";
 		public TextWriter Stream;
 		public readonly List<string> Columns = new List<string>();
