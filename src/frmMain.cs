@@ -260,7 +260,8 @@ namespace RedatamConverter
 					if (MessageBox.Show(this, "Disk full (less than 1MB free). Not enough space to complete the export.", "Error", MessageBoxButtons.RetryCancel)
 						== System.Windows.Forms.DialogResult.Cancel)
 					{
-						throw new Exception("Cancelled. Disk full.");
+						exporter.Cancelled = true;
+						break;
 					}
 				}
 			}
