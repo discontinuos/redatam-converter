@@ -73,6 +73,17 @@ namespace RedatamConverter
 
 		private string eatStringFromString(ref string extras)
 		{
+			if (extras.StartsWith("'"))
+			{
+				int nEnd = extras.IndexOf("'", 1);
+				if (nEnd != -1)
+				{
+					string retQ = extras.Substring(1, nEnd - 1);
+					extras = extras.Substring(nEnd + 1).TrimStart();
+					return retQ;
+				}
+			}
+
 			int n = extras.IndexOf(" ");
 			if (n == -1) n = extras.Length;
 			string ret = extras.Substring(0, n);
