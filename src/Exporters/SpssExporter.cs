@@ -36,6 +36,7 @@ namespace RedatamConverter
 					var = CreateStringVariable(v);
 					break;
 				case "INTEGER":
+				case "INT16":
 					var = CreateNumericVariable(v);
 					break;
 				case "REAL":

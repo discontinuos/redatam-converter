@@ -94,7 +94,7 @@ namespace RedatamConverter
 			return ReadInt16() + ReadInt16() * 0x10000;
 		}
 
-		private uint ReadInt16()
+		public uint ReadInt16()
 		{
 			return ReadByte() + ReadByte() * 0x100;
 		}

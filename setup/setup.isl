@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?xml-stylesheet type="text/xsl" href="is.xsl" ?>
 <!DOCTYPE msi [
    <!ELEMENT msi   (summary,table*)>
@@ -1897,13 +1897,13 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>icudt32.dll</td><td>icudt32.dll</td><td>icudt32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Pablo\Sociologia\Redatam Tools\converter\redatam-converter\runtime\system32\icudt32.dll</td><td>1</td><td/></row>
-		<row><td>icuin32.dll</td><td>icuin32.dll</td><td>icuin32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Pablo\Sociologia\Redatam Tools\converter\redatam-converter\runtime\system32\icuin32.dll</td><td>1</td><td/></row>
-		<row><td>icuuc32.dll</td><td>icuuc32.dll</td><td>icuuc32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Pablo\Sociologia\Redatam Tools\converter\redatam-converter\runtime\system32\icuuc32.dll</td><td>1</td><td/></row>
-		<row><td>msvcp71.dll</td><td>msvcp71.dll</td><td>msvcp71.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Pablo\Sociologia\Redatam Tools\converter\redatam-converter\runtime\system32\msvcp71.dll</td><td>1</td><td/></row>
-		<row><td>msvcr71.dll</td><td>msvcr71.dll</td><td>msvcr71.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Pablo\Sociologia\Redatam Tools\converter\redatam-converter\runtime\system32\msvcr71.dll</td><td>1</td><td/></row>
+		<row><td>icudt32.dll</td><td>icudt32.dll</td><td>icudt32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;\..\..\runtime\system32\icudt32.dll</td><td>1</td><td/></row>
+		<row><td>icuin32.dll</td><td>icuin32.dll</td><td>icuin32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;\..\..\runtime\system32\icuin32.dll</td><td>1</td><td/></row>
+		<row><td>icuuc32.dll</td><td>icuuc32.dll</td><td>icuuc32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;\..\..\runtime\system32\icuuc32.dll</td><td>1</td><td/></row>
+		<row><td>msvcp71.dll</td><td>msvcp71.dll</td><td>msvcp71.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;\..\..\runtime\system32\msvcp71.dll</td><td>1</td><td/></row>
+		<row><td>msvcr71.dll</td><td>msvcr71.dll</td><td>msvcr71.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;\..\..\runtime\system32\msvcr71.dll</td><td>1</td><td/></row>
 		<row><td>redatamconverter.primary_out</td><td>RedatamConverter.Primary_output</td><td>RedatamConverter.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;RedatamConverter&gt;|Built</td><td>3</td><td/></row>
-		<row><td>spssio32.dll</td><td>spssio32.dll</td><td>spssio32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Pablo\Sociologia\Redatam Tools\converter\redatam-converter\runtime\system32\spssio32.dll</td><td>1</td><td/></row>
+		<row><td>spssio32.dll</td><td>spssio32.dll</td><td>spssio32.dll</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;ISPROJECTDIR&gt;\..\..\runtime\system32\spssio32.dll</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">

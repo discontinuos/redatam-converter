@@ -106,6 +106,8 @@ namespace RedatamConverter
 					return reader.ReadString();
 				case "INTEGER":
 					return reader.ReadNumber();
+				case "INT16":
+					return reader.ReadInt16();
 				case "REAL":
 					return reader.ReadDouble();
 				default:
@@ -125,10 +127,25 @@ namespace RedatamConverter
 				throw new Exception("Inconsistent type declaration");
 			if (this.Type == "REAL" && type != "DBL")
 				throw new Exception("Inconsistent type declaration");
-			if (type == "DBL")
-				this.Size = 64;
-			else
-				this.Size = int.Parse(size);
+			switch (type)
+			{
+				case "DBL":
+					this.Size = 64;
+					break;
+				case "LNG":
+					this.Size = 32;
+					break;
+				case "INT":
+					this.Size = 16;
+					this.Type = "INT16";
+					break;
+				case "PCK":
+				case "CHR":
+					this.Size = int.Parse(size);
+					break;
+				default:
+					throw new Exception("Data type '" + type + "' is not supported. Contact idiscontinuos for support.");
+			}
 			this.Filename = fileRaw;
 		}
 		internal void OpenData()

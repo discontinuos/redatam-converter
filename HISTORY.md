@@ -1,4 +1,7 @@
-﻿# Versión 1.2
+﻿# Versión 1.3
+Soporte para tipos de dato INT (int16) y LNG (int32).
+
+# Versión 1.2
 Fix para instalaciones en rutas con espacios (Windows 7).
 
 # Versión 1.1
