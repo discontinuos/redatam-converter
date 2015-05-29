@@ -7,9 +7,7 @@ RedatamConverter es un proyecto de código abierto que permite leer bases de Red
 
 El conversor fue probado con bases de REDATAM en diferentes versiones, intentando ser compatible con cambios que pudieran haber ocurrido en el tiempo. La prueba más antigua se realizó con una base que se distribuyó junto con REDATAM  2.3.0.5 (año 2003) mientras que la más reciente fue una versión 2.5.7.0 (año 2012).
 
-# LIMITACIONES
-
-La versión actual exporta a formato SPSS nativo. Están pendientes los exportadores a formatos menos propietarios (CVS y DBFs). El formato REDATAM no se encuentra oficialmente documentado, por lo que el parseo se basa en suposiciones sobre su estructura. Los resultados que de ellos se deriven deben ser chequeados y usados bajo responsabilidad de quien lo utilice.
+La versión actual exporta a formato SPSS nativo y archivos separados por comas (CSV). 
 
 # REQUISITOS DE INSTALACION AUTOMATICA
 
