@@ -2,6 +2,7 @@
 - Soporte para bases de datos más antiguas (sin puntero en la entidad de nivel 1).
 - Separación de fuentes en subproyectos RedatamConverter y RedatamLib (dll de lectura).
 - Soporte para exportación de bases de datos con archivos de datos faltantes.
+- Mejoras en el instalador.
 
 # Versión 1.3
 - Soporte para tipos de dato INT (int16) y LNG (int32).
