@@ -1168,7 +1168,7 @@
 		<row><td>ProgramMenuFolder</td><td>TARGETDIR</td><td>.:Programs</td><td/><td>3</td><td/></row>
 		<row><td>REDATAM_</td><td>DISCONTINOUS</td><td>REDATA~1|Redatam </td><td/><td>0</td><td/></row>
 		<row><td>REDATAM_CONVERTER</td><td>DISCONTINOUS</td><td>REDATA~1|Redatam Converter</td><td/><td>0</td><td/></row>
-		<row><td>REDATAM_CONVERTER1</td><td>DISCONTINUOS</td><td>REDATA~1|Redatam Converter</td><td/><td>0</td><td/></row>
+		<row><td>REDATAM_CONVERTER1</td><td>ProgramFilesFolder</td><td>REDATA~1|Redatam Converter</td><td/><td>0</td><td/></row>
 		<row><td>RecentFolder</td><td>TARGETDIR</td><td>.:Recent</td><td/><td>0</td><td/></row>
 		<row><td>SendToFolder</td><td>TARGETDIR</td><td>.:SendTo</td><td/><td>3</td><td/></row>
 		<row><td>StartMenuFolder</td><td>TARGETDIR</td><td>.:STARTM~1|Start Menu</td><td/><td>3</td><td/></row>
@@ -1182,8 +1182,7 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
-		<row><td>discon_1_discontinous</td><td>ProgramMenuFolder</td><td>DISCON~1|discontinous</td><td/><td>1</td><td/></row>
-		<row><td>redata_1_redatam_converter</td><td>discon_1_discontinous</td><td>REDATA~1|Redatam Converter</td><td/><td>1</td><td/></row>
+		<row><td>redata_1_redatam_converter</td><td>ProgramMenuFolder</td><td>REDATA~1|Redatam Converter</td><td/><td>1</td><td/></row>
 	</table>
 
 	<table name="DrLocator">
@@ -3779,6 +3778,7 @@
 		<row><td>ID_STRING2</td><td>1033</td><td/><td>0</td><td/><td>-1717361018</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>http://idiscontinuos.wordpress.com</td><td>0</td><td/><td>1537455077</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>discontinuos</td><td>0</td><td/><td>-1583127382</td></row>
+		<row><td>ID_STRING5</td><td>1033</td><td>REDATA~1|Redatam Converter</td><td>0</td><td/><td>1537440294</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1717311898</td></row>
 	</table>
 
@@ -4019,7 +4019,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{75B8758C-D9AF-4AF4-97A6-F99B3F0A8769}</td></row>
 		<row><td>ISUSSignature</td><td>{1E962E1E-036B-4BC6-B0D4-ABFD2BC52AB2}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday,viewAppFiles,viewRelease,viewDesignPatches</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday,viewAppFiles,viewRelease,viewDesignPatches,viewFeatureFiles,viewShortcuts,viewSetupDesign,viewAppV</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4365,8 +4365,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>IS_SQLSERVER_USERNAME</td><td>sa</td><td/></row>
 		<row><td>InstallChoice</td><td>AR</td><td/></row>
 		<row><td>LAUNCHPROGRAM</td><td>1</td><td/></row>
-		<row><td>LAUNCHPROGRAMCOMPCODE</td><td>{53C05990-C04B-43EF-AED5-B06B06E4A4F5}</td><td/></row>
-		<row><td>LAUNCHPROGRAMFILEKEY</td><td>redatamconverter.primary_out</td><td/></row>
+		<row><td>LAUNCHPROGRAMCOMPCODE</td><td>{9A8B1204-7C87-4E31-99EE-6C5EC2C166A0}</td><td/></row>
+		<row><td>LAUNCHPROGRAMFILEKEY</td><td>redatamconverter.primary_out1</td><td/></row>
 		<row><td>LAUNCHREADME</td><td>1</td><td/></row>
 		<row><td>Manufacturer</td><td>##COMPANY_NAME##</td><td/></row>
 		<row><td>PIDKEY</td><td/><td/></row>
@@ -4474,6 +4474,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
+		<row><td>NewShortcut1</td><td>RedatamConverter.Primary_output1</td><td/><td>redata_1_redatam_converter</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4559,6 +4560,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
+		<row><td>NewShortcut1</td><td>redata_1_redatam_converter</td><td>##ID_STRING5##</td><td>RedatamConverter.Primary_output1</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
