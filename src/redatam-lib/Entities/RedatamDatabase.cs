@@ -30,5 +30,14 @@ namespace RedatamLib
 			}
 			return ret;
 		}
+
+		public static string OptimisticCombine(string path, string file)
+		{
+				string filefull = Path.Combine(path, file);
+				if (File.Exists(filefull)) return filefull;
+				string fOnly = Path.GetFileName(file);
+				filefull = Path.Combine(path, fOnly);
+				return filefull;
+		}
 	}
 }

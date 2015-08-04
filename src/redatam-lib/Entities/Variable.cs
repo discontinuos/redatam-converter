@@ -140,6 +140,8 @@ namespace RedatamLib
 				throw new Exception("Inconsistent type declaration");
 			switch (type)
 			{
+				// si se agregan tipos nuevos, incorporarlos en 
+				// entityParser => validTypes
 				case "DBL":
 					this.Size = 64;
 					break;
@@ -181,7 +183,7 @@ namespace RedatamLib
 
 		private string ResolveDataFilename()
 		{
-			return Path.Combine(this.entity.rootPath, Filename.Replace("'", ""));
+				return RedatamDatabase.OptimisticCombine(this.entity.rootPath, Filename.Replace("'", ""));
 		}
 
 		public void CloseData()

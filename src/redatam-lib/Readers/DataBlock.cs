@@ -27,6 +27,7 @@ namespace RedatamLib
 			Array.Copy(data, prevStart, part, 0, iStart - prevStart);
 			return new DataBlock(part);
 		}
+
 		public bool eatPlausibleString(out string cad, bool filterByContent = true)
 		{
 			if (PlausibleString(out cad, filterByContent) == false)
@@ -35,6 +36,7 @@ namespace RedatamLib
 			cad = eatShortString();
 			return true;
 		}
+
 		public bool PlausibleString(out string cad, bool filterByContent = true)
 		{
 			int keepN = n;
@@ -154,7 +156,7 @@ namespace RedatamLib
 		{
 			return data[n++];
 		}
-		string eatChars(int length)
+		public string eatChars(int length)
 		{
 			string cad = Encoding.Default.GetString(data, n, length);
 			n += length;
@@ -176,11 +178,6 @@ namespace RedatamLib
 			byte n1 = (byte) (n % 256);
 			byte n2 = (byte ) (n / 256);
 			return new byte[] { n1, n2 };
-		}
-		void skipLine()
-		{
-			const string EOL = "\r\n";
-			//moveTo(EOL);
 		}
 		public bool moveTo(string item)
 		{
@@ -219,5 +216,6 @@ namespace RedatamLib
 			}
 			return true;
 		}
+
 	}
 }

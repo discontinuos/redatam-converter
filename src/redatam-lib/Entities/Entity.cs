@@ -39,7 +39,7 @@ namespace RedatamLib
 			//ubica el nombre de archivo y el tamaño de variable
 			if (this.IndexFilename != "")
 			{
-				string file = Path.Combine(this.rootPath, this.IndexFilename);
+				string file = RedatamDatabase.OptimisticCombine(this.rootPath, this.IndexFilename);
 				reader = new CursorReader(file, false, 16);
 			}
 			else

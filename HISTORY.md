@@ -1,4 +1,8 @@
-﻿# Versión 1.4
+﻿# Versión 1.5
+- Busca los archivos de datos y punteros en la carpeta del diccionario si falla la ruta relativa.
+- Valida el tipo indicado para considerar o ignorar la marca de DATASET.
+
+# Versión 1.4
 - Soporte para bases de datos más antiguas (sin puntero en la entidad de nivel 1).
 - Separación de fuentes en subproyectos RedatamConverter y RedatamLib (dll de lectura).
 - Soporte para exportación de bases de datos con archivos de datos faltantes.

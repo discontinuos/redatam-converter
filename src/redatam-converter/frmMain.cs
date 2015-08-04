@@ -41,7 +41,7 @@ namespace RedatamConverter
 			status.Visible = false;
 			status.CancelClick += new EventHandler(status_CancelClick);
 			var v = Assembly.GetExecutingAssembly().GetName().Version;
-			this.Text += " " + v.Major + "." + v.Minor;
+			Text += " " + v.Major + "." + v.Minor;
 		}
 
 

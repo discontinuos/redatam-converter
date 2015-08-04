@@ -11,6 +11,8 @@ namespace RedatamLib
 		RedatamDatabase db;
 		string rootPath;
 
+		private static string[] validTypes = { "DBL", "LNG", "INT", "PCK", "CHR" };
+
 		public EntityParser(RedatamDatabase db)
 		{
 			this.db = db;
@@ -106,14 +108,35 @@ namespace RedatamLib
 		{
 			if (dataBlock.moveTo("DATASET") == false)
 				return false;
+			// valida el tipo de dato
+			if (checkDataType(dataBlock) == false)
+					return false;
+				//
 			dataBlock.move(-2);
 			// retrocede para leer el nombre
 			if (dataBlock.moveBackString(32) < 1)
 			{
 				dataBlock.move(6);
+				// este no es válido... busca si hay más...
 				return JumptToDataSet(dataBlock);
 			}
 			else
+				return true;
+		}
+
+		private bool checkDataType(DataBlock dataBlock)
+		{
+				dataBlock.move(8); // "DATASET "			
+				if (dataBlock.n + 3 > dataBlock.data.Length)
+						return false;
+				string type = dataBlock.eatChars(3); // "DBL", "LNG", etc
+				if (new List<string>(validTypes).Contains(type) == false)
+				{
+						// este no es válido... busca si hay más...
+						return JumptToDataSet(dataBlock);
+				}
+				// retrocede hasta el inicio de DATASET
+				dataBlock.move(-11);
 				return true;
 		}
 
