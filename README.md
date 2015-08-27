@@ -6,7 +6,7 @@ RedatamConverter es un proyecto de código abierto que permite leer bases de Red
 
 # DESCARGAS
 
-Descargar: [[Instalador Windows 32-bit](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true)] (8.74MB)
+Descargar: [Instalador Windows 32-bit](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true) (8.74MB)
 
 # HISTORIAL
 

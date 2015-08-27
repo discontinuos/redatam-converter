@@ -6,7 +6,7 @@ RedatamConverter is an open source project that lets you read Redatam datadataba
  
 # DOWNLOADS
 
-Download: [[Windows 32-bit Setup](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true)] (8.74MB)
+Download: [Windows 32-bit Setup](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true) (8.74MB)
 
 # HISTORY
 
