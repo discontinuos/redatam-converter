@@ -3,19 +3,22 @@ Application for extracting information from REDATAM datadatabasess
  
 RedatamConverter is an open source project that lets you read Redatam datadatabasess to export their microdata. It was created to recover information of REDATAM databases for statistics analysis using standard tools such as SPSS, STATA, R, etc.
  
+# DOWNLOADS
+
+[Download Windows 32-bit Setup](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true) (8.74MB)
+
+# HISTORY
+
+The log for changes can be seen at [history record](https://github.com/discontinuos/redatam-converter/blob/master/HISTORY-EN.md).
+
+
 # COMPATIBILITY
  
 The converter was tested with REDATAM databases in different versions, trying to be compatible with changes that may have occurred over time. The oldest test was performed with a databases that was distributed along with REDATAM 2.3.0.5 (year 2003) while the most recent was a version 2.5.7.0 (year 2012). Versions 1.4 and 1.5 were adjusted from dictionaries from censuses of 1963 from Uruguay and of 1991 from Argentina.
  
 The current version exports to SPSS native format and to comma separated files (CSV). 
  
-# STANDALONE SETUP REQUIREMENTS
- 
-The can be installed using the standalone setup. It is available at:
- 
-https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true.
- 
-# MANUAL SETUP REQUIREMENTS
+# MANUAL INSTALLATION REQUIREMENTS
  
 Manual installation can be performed using the compiled version in the folder /bin.
  
