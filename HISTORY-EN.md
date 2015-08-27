@@ -1,4 +1,6 @@
-﻿# Version 1.5 - 2015-08-04
+﻿[README-EN.md](https://github.com/discontinuos/redatam-converter/blob/master/README-EN.md).
+
+# Version 1.5 - 2015-08-04
 - Search for data files and pointer files in the dictionary folder if it fails in the relative path.
 - Validates the data type to consider or ignore DATASET tag.
  

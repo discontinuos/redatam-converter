@@ -1,11 +1,11 @@
-﻿# redatam - converter
+﻿# REDATAM CONVERTER
 Application for extracting information from REDATAM datadatabasess
  
 RedatamConverter is an open source project that lets you read Redatam datadatabasess to export their microdata. It was created to recover information of REDATAM databases for statistics analysis using standard tools such as SPSS, STATA, R, etc.
  
 # DOWNLOADS
 
-[Download Windows 32-bit Setup](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true) (8.74MB)
+Download: [[Windows 32-bit Setup](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true)] (8.74MB)
 
 # HISTORY
 

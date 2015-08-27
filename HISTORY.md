@@ -1,4 +1,4 @@
-﻿[Ver readme.md](https://github.com/discontinuos/redatam-converter/blob/master/README.md).
+﻿[README.md](https://github.com/discontinuos/redatam-converter/blob/master/README.md).
 
 # Versión 1.5 - 2015-08-04
 - Busca los archivos de datos y punteros en la carpeta del diccionario si falla la ruta relativa.
