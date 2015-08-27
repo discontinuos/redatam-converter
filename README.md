@@ -13,7 +13,7 @@ La versión actual exporta a formato SPSS nativo y archivos separados por comas 
 
 Se puede realizar una instalación de la herramienta ejecutando el instalador. El mismo se encuentra disponible en:
 
-http://share.myflare.com/y8D5NX.
+https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true.
 
 # REQUISITOS DE INSTALACION MANUAL
 
