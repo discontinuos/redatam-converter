@@ -1,4 +1,5 @@
 ﻿# REDATAM CONVERTER
+[English Readme Available](https://github.com/discontinuos/redatam-converter/blob/master/README-EN.md).
 Aplicación para extraer información de bases de datos REDATAM.
 
 RedatamConverter es un proyecto de código abierto que permite leer bases de Redatam para exportar sus microdatos. Fue creado para poder recuperar información de base de REDATAM para realizar análisis estadísticas con herramientas estándar de análisis estadístico (SPSS, STATA, R, etc).
