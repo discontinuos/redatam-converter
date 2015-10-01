@@ -40,6 +40,8 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.folderTo = new System.Windows.Forms.Label();
 			this.lblFile = new System.Windows.Forms.Label();
+			this.btnExportMetadata = new System.Windows.Forms.Button();
+			this.btnSaveCSV = new System.Windows.Forms.Button();
 			this.btnSaveSPSS = new System.Windows.Forms.Button();
 			this.btnOpen = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -48,14 +50,15 @@
 			this.btnCopyEntities = new System.Windows.Forms.Button();
 			this.btnCopyVariables = new System.Windows.Forms.Button();
 			this.btnCopyLabels = new System.Windows.Forms.Button();
-			this.btnSaveCSV = new System.Windows.Forms.Button();
+			this.btnTest = new System.Windows.Forms.Button();
+			this.btnRegenTest = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lwEntities
 			// 
-			this.lwEntities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-									| System.Windows.Forms.AnchorStyles.Left)));
+			this.lwEntities.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
 			this.lwEntities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
 			this.lwEntities.FullRowSelect = true;
@@ -76,9 +79,9 @@
 			// lwVariables
 			// 
 			this.lwVariables.AllowColumnReorder = true;
-			this.lwVariables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-									| System.Windows.Forms.AnchorStyles.Left)
-									| System.Windows.Forms.AnchorStyles.Right)));
+			this.lwVariables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.lwVariables.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3});
@@ -105,8 +108,8 @@
 			// lwLabels
 			// 
 			this.lwLabels.AllowColumnReorder = true;
-			this.lwLabels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-									| System.Windows.Forms.AnchorStyles.Right)));
+			this.lwLabels.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.lwLabels.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader5});
@@ -130,10 +133,13 @@
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-									| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.btnTest);
+			this.groupBox1.Controls.Add(this.btnRegenTest);
 			this.groupBox1.Controls.Add(this.folderTo);
 			this.groupBox1.Controls.Add(this.lblFile);
+			this.groupBox1.Controls.Add(this.btnExportMetadata);
 			this.groupBox1.Controls.Add(this.btnSaveCSV);
 			this.groupBox1.Controls.Add(this.btnSaveSPSS);
 			this.groupBox1.Controls.Add(this.btnOpen);
@@ -162,11 +168,34 @@
 			this.lblFile.TabIndex = 5;
 			this.lblFile.Text = "...";
 			// 
-			// btnSaveData
+			// btnExportMetadata
+			// 
+			this.btnExportMetadata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnExportMetadata.Enabled = false;
+			this.btnExportMetadata.Location = new System.Drawing.Point(489, 50);
+			this.btnExportMetadata.Name = "btnExportMetadata";
+			this.btnExportMetadata.Size = new System.Drawing.Size(116, 23);
+			this.btnExportMetadata.TabIndex = 4;
+			this.btnExportMetadata.Text = "Save description...";
+			this.btnExportMetadata.UseVisualStyleBackColor = true;
+			this.btnExportMetadata.Click += new System.EventHandler(this.btnExportMetadata_Click);
+			// 
+			// btnSaveCSV
+			// 
+			this.btnSaveCSV.Enabled = false;
+			this.btnSaveCSV.Location = new System.Drawing.Point(128, 48);
+			this.btnSaveCSV.Name = "btnSaveCSV";
+			this.btnSaveCSV.Size = new System.Drawing.Size(100, 23);
+			this.btnSaveCSV.TabIndex = 4;
+			this.btnSaveCSV.Text = "Save as CSV...";
+			this.btnSaveCSV.UseVisualStyleBackColor = true;
+			this.btnSaveCSV.Click += new System.EventHandler(this.btnSaveCSV_Click);
+			// 
+			// btnSaveSPSS
 			// 
 			this.btnSaveSPSS.Enabled = false;
 			this.btnSaveSPSS.Location = new System.Drawing.Point(22, 48);
-			this.btnSaveSPSS.Name = "btnSaveData";
+			this.btnSaveSPSS.Name = "btnSaveSPSS";
 			this.btnSaveSPSS.Size = new System.Drawing.Size(100, 23);
 			this.btnSaveSPSS.TabIndex = 4;
 			this.btnSaveSPSS.Text = "Save as SPSS...";
@@ -244,16 +273,27 @@
 			this.btnCopyLabels.UseVisualStyleBackColor = true;
 			this.btnCopyLabels.Click += new System.EventHandler(this.btnCopyLabels_Click);
 			// 
-			// btnSaveCSV
+			// btnTest
 			// 
-			this.btnSaveCSV.Enabled = false;
-			this.btnSaveCSV.Location = new System.Drawing.Point(128, 48);
-			this.btnSaveCSV.Name = "btnSaveCSV";
-			this.btnSaveCSV.Size = new System.Drawing.Size(100, 23);
-			this.btnSaveCSV.TabIndex = 4;
-			this.btnSaveCSV.Text = "Save as CSV...";
-			this.btnSaveCSV.UseVisualStyleBackColor = true;
-			this.btnSaveCSV.Click += new System.EventHandler(this.btnSaveCSV_Click);
+			this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnTest.Location = new System.Drawing.Point(489, 19);
+			this.btnTest.Name = "btnTest";
+			this.btnTest.Size = new System.Drawing.Size(116, 23);
+			this.btnTest.TabIndex = 7;
+			this.btnTest.Text = "Run tests";
+			this.btnTest.UseVisualStyleBackColor = true;
+			this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+			// 
+			// btnRegenTest
+			// 
+			this.btnRegenTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRegenTest.Location = new System.Drawing.Point(366, 19);
+			this.btnRegenTest.Name = "btnRegenTest";
+			this.btnRegenTest.Size = new System.Drawing.Size(116, 23);
+			this.btnRegenTest.TabIndex = 8;
+			this.btnRegenTest.Text = "Generate test data";
+			this.btnRegenTest.UseVisualStyleBackColor = true;
+			this.btnRegenTest.Click += new System.EventHandler(this.btnRegenTest_Click);
 			// 
 			// frmMain
 			// 
@@ -306,6 +346,9 @@
 		private System.Windows.Forms.Button btnCopyVariables;
 		private System.Windows.Forms.Button btnCopyLabels;
 		private System.Windows.Forms.Button btnSaveCSV;
+		private System.Windows.Forms.Button btnExportMetadata;
+		private System.Windows.Forms.Button btnTest;
+		private System.Windows.Forms.Button btnRegenTest;
 	}
 }
 

@@ -10,7 +10,6 @@ namespace RedatamLib
 	{
 		public byte[] data;
 		public int n =0;
-		private string path;
 
 		public DataBlock(string path)
 		{

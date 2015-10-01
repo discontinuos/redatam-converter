@@ -38,11 +38,15 @@ namespace RedatamConverter
 		{
 			Folder = folder;
 			// crea archivos para cada entidad
-			Entity parent = null;
-			foreach (Entity e in db.Entities)
+			ExportEntities(null, db.Entities);
+		}
+
+		private void ExportEntities(Entity parent, List<Entity> entities)
+		{
+			foreach (Entity e in entities)
 			{
 				CurrentEntity = e.Name;
-				T doc = CreateTable(folder, e);
+				T doc = CreateTable(this.Folder, e);
 
 				CreateIdVariables(parent, e, doc);
 				CreateDataVariables(e.Variables, doc);
@@ -55,9 +59,11 @@ namespace RedatamConverter
 				{
 					CloseTable(doc);
 				}
-				parent = e;
+				ExportEntities(e, e.Children);
 			}
 		}
+
+
 
 		private void CreateData(Entity e, Entity parentEntity, T doc)
 		{

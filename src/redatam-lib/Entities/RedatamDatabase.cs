@@ -8,7 +8,7 @@ namespace RedatamLib
 {
 	public class RedatamDatabase
 	{
-		public List<string> entityNames = new List<string>(); 
+		public List<Entity> entityNames = new List<Entity>();
 		public readonly List<Entity> Entities = new List<Entity>();
 		public FuzzyEntityParser FuzzyEntityParser;
 		public string DictionaryFile; 
@@ -22,11 +22,20 @@ namespace RedatamLib
 		public long GetTotalRowsSize()
 		{
 			long ret = 0;
-			foreach (var entity in Entities)
+			ret += GetEntitiesRowsSize(Entities);
+			return ret;
+		}
+
+		private long GetEntitiesRowsSize(List<Entity> entities)
+		{
+			long ret = 0;
+			foreach (var entity in entities)
 			{
 				entity.OpenPointer();
 				ret += entity.GetPointerRows();
 				entity.ClosePointer();
+
+				ret += GetEntitiesRowsSize(entity.Children);
 			}
 			return ret;
 		}
@@ -38,6 +47,28 @@ namespace RedatamLib
 				string fOnly = Path.GetFileName(file);
 				filefull = Path.Combine(path, fOnly);
 				return filefull;
+		}
+
+		public void OpenDictionary(string file)
+		{
+			try
+			{
+				this.FuzzyEntityParser.ParseEntities(file);
+			}
+			catch (Exception e)
+			{
+				throw new Exception("An error ocurred while discovering the dictionary entities (" + e.Message + ").");
+			}
+			// Parse de entidades y variables
+			try
+			{
+				EntityParser parser = new EntityParser(this);
+				parser.Parse(file);
+			}
+			catch (Exception e)
+			{
+				throw new Exception("An error ocurred while parsing the dictionary variables and labels (" + e.Message + ").");
+			}
 		}
 	}
 }

@@ -26,17 +26,22 @@ namespace RedatamLib
 			// separa en bloques los datos de cada entidad...
 			Dictionary<string, DataBlock> dataParts = SplitDataBlocks(dataBlock, db.entityNames);
 
-			ParseEntities(db.entityNames, dataParts);
+			db.Entities.AddRange(ParseEntities(null, db.entityNames, dataParts));
 		}
 
-		public void ParseEntities(List<string> entitiesNames, Dictionary<string, DataBlock> dataParts)
+		public List<Entity> ParseEntities(Entity parent, List<Entity> entitiesNames, Dictionary<string, DataBlock> dataParts)
 		{
-			string parent = "";
-			foreach (string entity in entitiesNames)
+			List<Entity> ret = new List<Entity>();
+			foreach (Entity entityName in entitiesNames)
 			{
-				db.Entities.Add(ParseEntity(dataParts[entity], entity, parent));
-				parent = entity;
+				string parentName = (parent == null ? "" : parent.Name);
+				var entity = ParseEntity(dataParts[entityName.Name], entityName.Name, parentName);
+				ret.Add(entity);
+				List<Entity> children = ParseEntities(entityName, entityName.Children, dataParts);
+				if (children.Count > 0)
+					entity.Children.AddRange(children);
 			}
+			return ret;
 		}
 
 		public Entity ParseEntity(DataBlock dataBlock, string entity, string parent)
@@ -140,27 +145,27 @@ namespace RedatamLib
 				return true;
 		}
 
-		private Dictionary<string, DataBlock> SplitDataBlocks(DataBlock dataBlock, List<string> entitiesNames)
+		private Dictionary<string, DataBlock> SplitDataBlocks(DataBlock dataBlock, List<Entity> entitiesNames)
 		{
 			Dictionary<string, DataBlock> dataParts = new Dictionary<string, DataBlock>();
 
 			int prevStart = -1;
 			int iStart = 0;
-			string parent = "";
-			for (int i = 0; i < entitiesNames.Count; i++)
+			List<Tuple<string, string>> linealEntityParentNames = Entity.Linealize(null, entitiesNames);
+			for (int i = 0; i < linealEntityParentNames.Count; i++)
 			{
-				string entity = entitiesNames[i];
-				iStart = ParseBeginning(dataBlock, entity, parent);
-				parent = entity;
+				string entity = linealEntityParentNames[i].Item2;
+				iStart = ParseBeginning(dataBlock, linealEntityParentNames[i].Item2,
+																						linealEntityParentNames[i].Item1);
 				if (prevStart != -1)
 				{
-					dataParts[entitiesNames[i - 1]] = dataBlock.getPart(prevStart, iStart);
+					dataParts[linealEntityParentNames[i - 1].Item2] = dataBlock.getPart(prevStart, iStart);
 				}
 				prevStart = iStart;
 			}
 			// guarda el último
 			iStart = dataBlock.data.Length;
-			dataParts[entitiesNames[entitiesNames.Count - 1]] = dataBlock.getPart(prevStart, iStart);
+			dataParts[linealEntityParentNames[linealEntityParentNames.Count - 1].Item2] = dataBlock.getPart(prevStart, iStart);
 			return dataParts;
 		}
 

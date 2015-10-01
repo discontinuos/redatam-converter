@@ -1,5 +1,9 @@
 ﻿[README.md](https://github.com/discontinuos/redatam-converter/blob/master/README.md).
 
+# Versión 1.6 - 2015-09-30
+- Soporte para bases de datos con entidades con más de una entidad hija.
+- Test automatizados para validar integridad entre versiones.
+
 # Versión 1.5 - 2015-08-04
 - Busca los archivos de datos y punteros en la carpeta del diccionario si falla la ruta relativa.
 - Valida el tipo de dato indicado para considerar o ignorar la marca de DATASET.

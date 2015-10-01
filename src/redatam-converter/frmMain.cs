@@ -27,7 +27,16 @@ namespace RedatamConverter
 		List<string> skipColumns = new List<string>() { "ValuesLabelsRaw", "ValuesLabels" };
 		bool cancelled = false;
 		cStatus status = new cStatus();
-
+		
+		string testsFolder {
+			get 
+			{
+				string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+				if (path.EndsWith("Debug")) path = Path.GetDirectoryName(path);
+				if (path.EndsWith("bin")) path = Path.GetDirectoryName(path);
+				return Path.Combine(path, "tests");
+			}
+		}
 		[DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static extern bool GetDiskFreeSpaceEx(string lpDirectoryName, out ulong lpFreeBytesAvailable,		out ulong lpTotalNumberOfBytes,		out ulong lpTotalNumberOfFreeBytes);
@@ -42,6 +51,14 @@ namespace RedatamConverter
 			status.CancelClick += new EventHandler(status_CancelClick);
 			var v = Assembly.GetExecutingAssembly().GetName().Version;
 			Text += " " + v.Major + "." + v.Minor;
+
+			#if DEBUG
+				btnTest.Visible = true;
+				btnRegenTest.Visible = true;
+			#else
+				btnTest.Visible = false;
+				btnRegenTest.Visible = false;
+			#endif
 		}
 
 
@@ -77,23 +94,12 @@ namespace RedatamConverter
 
 			try
 			{
-				db.FuzzyEntityParser.ParseEntities(file);
-			}
-			catch (Exception e)
-			{
-				MessageBox.Show(this, "An error ocurred while discovering the dictionary entities (" + e.Message + ").");
-				return;
-			}
-			// Parse de entidades y variables
-			try
-			{
-				EntityParser parser = new EntityParser(db);
-				parser.Parse(file);
+				db.OpenDictionary(file);
 			}
 			catch (Exception e)
 			{
 				FillEntityNamesListView();
-				MessageBox.Show(this, "An error ocurred while parsing the dictionary variables and labels (" + e.Message + ").");
+				MessageBox.Show(this, e.Message);
 				return;
 			}
 			finally
@@ -107,6 +113,7 @@ namespace RedatamConverter
 		{
 			btnSaveSPSS.Enabled = value;
 			btnSaveCSV.Enabled = value;
+			btnExportMetadata.Enabled = value;
 		}
 		void status_CancelClick(object sender, EventArgs e)
 		{
@@ -125,12 +132,21 @@ namespace RedatamConverter
 			lwVariables.Items.Clear();
 			lwLabels.Items.Clear();
 			if (db == null) return;
-			foreach (string entity in db.entityNames)
+			AddEntities(0, db.entityNames, true);
+		}
+
+		private void AddEntities(int level, List<Entity> entities, bool nullTag = false)
+		{
+			foreach (Entity entity in entities)
 			{
 				ListViewItem item = new ListViewItem();
-				item.Tag = null;
-				item.Text = entity;
+				if (nullTag)
+					item.Tag = null;
+				else
+					item.Tag = entity;
+				item.Text = new String(' ', level * 2) + entity.Name;
 				lwEntities.Items.Add(item);
+				AddEntities(level + 1, entity.Children);
 			}
 		}
 
@@ -140,13 +156,7 @@ namespace RedatamConverter
 			lwVariables.Items.Clear();
 			lwLabels.Items.Clear();
 			if (db == null) return;
-			foreach (var entity in db.Entities)
-			{
-				ListViewItem item = new ListViewItem();
-				item.Tag = entity;
-				item.Text = entity.Name;
-				lwEntities.Items.Add(item);
-			}
+			AddEntities(0, db.Entities);
 			SelectFirst(lwEntities);
 		}
 
@@ -475,6 +485,98 @@ namespace RedatamConverter
 			exporterType = typeof(CSVExporter);
 			ShowSaveDialog("CSV");
 		}
+
+		private void btnExportMetadata_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog fileBrowserDialog1 = new SaveFileDialog();
+			fileBrowserDialog1.DefaultExt = "xml";
+			fileBrowserDialog1.OverwritePrompt = true;
+			fileBrowserDialog1.Filter = "XML file (*.xml)|*.txt|All files (*.*)|*.*";
+			fileBrowserDialog1.Title = "Select the filename for definitions";
+			if (fileBrowserDialog1.ShowDialog(this) == DialogResult.OK)
+			{
+				MetadataExporter exporter = new MetadataExporter(this.db);
+				exporter.Save(fileBrowserDialog1.FileName);
+			}
+		}
+
+		private void btnTest_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string path = Path.Combine(testsFolder, "dictionaries");
+				string outpath = Path.Combine(testsFolder, "output");
+				string sucessPath = Path.Combine(testsFolder, "success");
+
+				Cursor.Current = Cursors.WaitCursor;
+				ExportDicOutput(path, outpath);
+				Cursor.Current = Cursors.Default;
+				// compara
+				foreach (string file in Directory.GetFiles(outpath, "*.xml"))
+				{
+					string targetFile = Path.Combine(sucessPath, Path.GetFileName(file));
+					if (File.ReadAllText(file) != File.ReadAllText(targetFile))
+					{
+						MessageBox.Show(this, "Test failed. File: " + Path.GetFileName(file), "Done");
+						return;
+					}
+				}
+				MessageBox.Show(this, "All tests run successfully", "Done");
+			}
+			catch (Exception ex)
+			{
+				Cursor.Current = Cursors.Default;
+
+				MessageBox.Show(this, "An error ocurred (" + ex.Message + ").");
+			}
+		}
+		
+		private void btnRegenTest_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				string path = Path.Combine(testsFolder, "dictionaries");
+				string outpath = Path.Combine(testsFolder, "success");
+				Cursor.Current = Cursors.WaitCursor;
+				ExportDicOutput(path, outpath);
+				Cursor.Current = Cursors.Default;
+				MessageBox.Show(this, "Data generated successfully", "Done");
+			}
+			catch (Exception ex)
+			{
+				Cursor.Current = Cursors.Default;
+
+				MessageBox.Show(this, "An error ocurred (" + ex.Message + ").");
+			}
+
+		}
+
+		private static void ExportDicOutput(string path, string outpath)
+		{
+			if (Directory.Exists(path) == false)
+			{
+				throw new Exception("Input directory not found: " + path);
+			}
+			if (Directory.Exists(outpath))
+			{
+				ClearXMLs(outpath);
+			}
+			foreach (string file in Directory.GetFiles(path, "*.dic"))
+			{
+				RedatamDatabase db = new RedatamDatabase();
+				db.OpenDictionary(file);
+
+				MetadataExporter exp = new MetadataExporter(db);
+				exp.Save(outpath + "\\" + Path.GetFileNameWithoutExtension(file) + ".xml");
+			}
+		}
+
+		private static void ClearXMLs(string outpath)
+		{
+			foreach (var file in Directory.GetFiles(outpath, "*.xml"))
+				File.Delete(file);
+		}
+
 
 	}
 }

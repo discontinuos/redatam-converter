@@ -71,6 +71,22 @@ namespace RedatamLib
 				return 0;
 			else
 				return reader.ReadLastInt32();
-		}	
+		}
+
+		internal static List<Tuple<string, string>> Linealize(Entity parent, List<Entity> entitiesNames)
+		{
+			var ret = new List<Tuple<string, string>>();
+			foreach (Entity e in entitiesNames)
+			{
+				if (parent == null)
+					ret.Add(new	Tuple<string, string>("", e.Name));
+				else
+					ret.Add(new Tuple<string, string>(parent.Name, e.Name));
+				var children = Linealize(e, e.Children);
+				if (children.Count > 0)
+					ret.AddRange(children);
+			}
+			return ret;
+		}
 	}
 }

@@ -42,6 +42,7 @@ namespace RedatamLib
 			foreach (string item in items)
 			{
 				int i = item.IndexOf(" ");
+				if (i == -1) break;
 				string part1 = item.Substring(0, i);
 				string part2 = item.Substring(i+1);
 				int x;
