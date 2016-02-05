@@ -1,0 +1,1114 @@
+<database>
+  <entity name="EPHARG" pointer="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0000.ptr">
+    <entity name="ANHO" pointer="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0001.ptr">
+      <variable name="IDANO4" label="Año de relevamiento" type="STRING" size="4" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0001.rbf">
+        <valueLabels>
+          <valueLabel name="10001" value="MISSING" />
+          <valueLabel name="10000" value="NOTAPPLICABLE" />
+        </valueLabels>
+      </variable>
+      <variable name="NANO4" label="Año de relevamiento" type="STRING" size="4" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0002.rbf">
+        <valueLabels>
+          <valueLabel name="10001" value="MISSING" />
+          <valueLabel name="10000" value="NOTAPPLICABLE" />
+        </valueLabels>
+      </variable>
+      <variable name="ANO4" label="Año de relevamiento" type="INTEGER" size="14" decimals="0" range="0 TO 9999" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0003.rbf">
+        <valueLabels>
+          <valueLabel name="10001" value="MISSING" />
+          <valueLabel name="10000" value="NOTAPPLICABLE" />
+        </valueLabels>
+      </variable>
+      <entity name="TRIMEST" pointer="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0002.ptr">
+        <variable name="IDTRIMESTR" label="Número de trimestre" type="STRING" size="1" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0004.rbf">
+          <valueLabels>
+            <valueLabel name="1" value="1er. Trimestre" />
+            <valueLabel name="2" value="2do. Trimestre" />
+            <valueLabel name="3" value="3er. Trimestre" />
+            <valueLabel name="4" value="4to. Trimestre" />
+            <valueLabel name="11" value="MISSING" />
+            <valueLabel name="10" value="NOTAPPLICABLE" />
+          </valueLabels>
+        </variable>
+        <variable name="NTRIMESTR" label="Número de trimestre" type="STRING" size="1" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0005.rbf">
+          <valueLabels>
+            <valueLabel name="1" value="1er. Trimestre" />
+            <valueLabel name="2" value="2do. Trimestre" />
+            <valueLabel name="3" value="3er. Trimestre" />
+            <valueLabel name="4" value="4to. Trimestre" />
+            <valueLabel name="11" value="MISSING" />
+            <valueLabel name="10" value="NOTAPPLICABLE" />
+          </valueLabels>
+        </variable>
+        <variable name="TRIMS" label="Año y Trimestre" type="REAL" size="64" decimals="2" range="0 TO 99999999" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0006.rbf">
+          <valueLabels>
+            <valueLabel name="1" value="3er Trimestre del 2003" />
+            <valueLabel name="2" value="4to Trimestre del 2003" />
+            <valueLabel name="3" value="1er Trimestre del 2004" />
+            <valueLabel name="4" value="2do Trimestre del 2004" />
+            <valueLabel name="5" value="3er Trimestre del 2004" />
+            <valueLabel name="6" value="4to Trimestre del 2004" />
+            <valueLabel name="7" value="1er Trimestre del 2005" />
+            <valueLabel name="8" value="2do Trimestre del 2005" />
+            <valueLabel name="9" value="3er Trimestre del 2005" />
+            <valueLabel name="10" value="4to Trimestre del 2005" />
+            <valueLabel name="11" value="1er Trimestre del 2006" />
+            <valueLabel name="12" value="2do Trimestre del 2006" />
+            <valueLabel name="13" value="3er Trimestre del 2006" />
+            <valueLabel name="14" value="4to Trimestre del 2006" />
+            <valueLabel name="15" value="1er Trimestre del 2007" />
+            <valueLabel name="16" value="2do Trimestre del 2007" />
+            <valueLabel name="17" value="4to Trimestre del 2007" />
+            <valueLabel name="18" value="1er Trimestre del 2008" />
+            <valueLabel name="19" value="2do Trimestre del 2008" />
+            <valueLabel name="20" value="3er Trimestre del 2008" />
+            <valueLabel name="21" value="4to Trimestre del 2008" />
+            <valueLabel name="22" value="1er Trimestre del 2009" />
+            <valueLabel name="23" value="2do Trimestre del 2009" />
+            <valueLabel name="24" value="3er Trimestre del 2009" />
+            <valueLabel name="25" value="4to Trimestre del 2009" />
+            <valueLabel name="26" value="1er Trimestre del 2010" />
+            <valueLabel name="27" value="2do Trimestre del 2010" />
+            <valueLabel name="28" value="3er Trimestre del 2010" />
+            <valueLabel name="29" value="4do Trimestre del 2010" />
+            <valueLabel name="100000001" value="MISSING" />
+            <valueLabel name="100000000" value="NOTAPPLICABLE" />
+          </valueLabels>
+        </variable>
+        <variable name="TRIMESTR" label="Número de trimestre" type="INTEGER" size="4" decimals="0" range="0 TO 9" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0007.rbf">
+          <valueLabels>
+            <valueLabel name="1" value="1er. Trimestre" />
+            <valueLabel name="2" value="2do. Trimestre" />
+            <valueLabel name="3" value="3er. Trimestre" />
+            <valueLabel name="4" value="4to. Trimestre" />
+            <valueLabel name="11" value="MISSING" />
+            <valueLabel name="10" value="NOTAPPLICABLE" />
+          </valueLabels>
+        </variable>
+        <entity name="AGLOMERA" pointer="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0003.ptr">
+          <variable name="IDAGLOMERA" label="Aglomerado" type="STRING" size="2" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0008.rbf">
+            <valueLabels>
+              <valueLabel name="2" value="Gran La Plata" />
+              <valueLabel name="3" value="Bahía Blanca - Cerri" />
+              <valueLabel name="4" value="Gran Rosario" />
+              <valueLabel name="5" value="Gran Santa Fe" />
+              <valueLabel name="6" value="Gran Paraná" />
+              <valueLabel name="7" value="Posadas" />
+              <valueLabel name="8" value="Gran Resistencia" />
+              <valueLabel name="9" value="Comodoro Rivadavia - Rada Tilly" />
+              <valueLabel name="10" value="Gran Mendoza" />
+              <valueLabel name="12" value="Corrientes" />
+              <valueLabel name="13" value="Gran Córdoba" />
+              <valueLabel name="14" value="Concordia" />
+              <valueLabel name="15" value="Formosa" />
+              <valueLabel name="17" value="Neuquén - Plottier" />
+              <valueLabel name="18" value="Santiago del Estero - La Banda" />
+              <valueLabel name="19" value="Jujuy - Palpalá" />
+              <valueLabel name="20" value="Río Gallegos" />
+              <valueLabel name="22" value="Gran Catamarca" />
+              <valueLabel name="23" value="Salta" />
+              <valueLabel name="25" value="La Rioja" />
+              <valueLabel name="26" value="San Luis - El Chorrillo" />
+              <valueLabel name="27" value="Gran San Juan" />
+              <valueLabel name="29" value="Gran Tucumán - Tafí Viejo" />
+              <valueLabel name="30" value="Santa Rosa - Toay" />
+              <valueLabel name="31" value="Ushuaia - Río Grande" />
+              <valueLabel name="32" value="Ciudad de Buenos Aires" />
+              <valueLabel name="33" value="Partidos del GBA" />
+              <valueLabel name="34" value="Mar del Plata - Batán" />
+              <valueLabel name="36" value="Río Cuarto" />
+              <valueLabel name="38" value="San Nicolás - Villa Constitución" />
+              <valueLabel name="91" value="Rawson - Trelew" />
+              <valueLabel name="93" value="Viedma - Carmen de Patagones" />
+              <valueLabel name="101" value="MISSING" />
+              <valueLabel name="100" value="NOTAPPLICABLE" />
+            </valueLabels>
+          </variable>
+          <variable name="NAGLOMERA" label="Aglomerado" type="STRING" size="2" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0009.rbf">
+            <valueLabels>
+              <valueLabel name="2" value="Gran La Plata" />
+              <valueLabel name="3" value="Bahía Blanca - Cerri" />
+              <valueLabel name="4" value="Gran Rosario" />
+              <valueLabel name="5" value="Gran Santa Fe" />
+              <valueLabel name="6" value="Gran Paraná" />
+              <valueLabel name="7" value="Posadas" />
+              <valueLabel name="8" value="Gran Resistencia" />
+              <valueLabel name="9" value="Comodoro Rivadavia - Rada Tilly" />
+              <valueLabel name="10" value="Gran Mendoza" />
+              <valueLabel name="12" value="Corrientes" />
+              <valueLabel name="13" value="Gran Córdoba" />
+              <valueLabel name="14" value="Concordia" />
+              <valueLabel name="15" value="Formosa" />
+              <valueLabel name="17" value="Neuquén - Plottier" />
+              <valueLabel name="18" value="Santiago del Estero - La Banda" />
+              <valueLabel name="19" value="Jujuy - Palpalá" />
+              <valueLabel name="20" value="Río Gallegos" />
+              <valueLabel name="22" value="Gran Catamarca" />
+              <valueLabel name="23" value="Salta" />
+              <valueLabel name="25" value="La Rioja" />
+              <valueLabel name="26" value="San Luis - El Chorrillo" />
+              <valueLabel name="27" value="Gran San Juan" />
+              <valueLabel name="29" value="Gran Tucumán - Tafí Viejo" />
+              <valueLabel name="30" value="Santa Rosa - Toay" />
+              <valueLabel name="31" value="Ushuaia - Río Grande" />
+              <valueLabel name="32" value="Ciudad de Buenos Aires" />
+              <valueLabel name="33" value="Partidos del GBA" />
+              <valueLabel name="34" value="Mar del Plata - Batán" />
+              <valueLabel name="36" value="Río Cuarto" />
+              <valueLabel name="38" value="San Nicolás - Villa Constitución" />
+              <valueLabel name="91" value="Rawson - Trelew" />
+              <valueLabel name="93" value="Viedma - Carmen de Patagones" />
+              <valueLabel name="101" value="MISSING" />
+              <valueLabel name="100" value="NOTAPPLICABLE" />
+            </valueLabels>
+          </variable>
+          <variable name="AGLOMERA" label="Aglomerado" type="INTEGER" size="7" decimals="0" range="0 TO 99" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0010.rbf">
+            <valueLabels>
+              <valueLabel name="2" value="Gran La Plata" />
+              <valueLabel name="3" value="Bahía Blanca - Cerri" />
+              <valueLabel name="4" value="Gran Rosario" />
+              <valueLabel name="5" value="Gran Santa Fe" />
+              <valueLabel name="6" value="Gran Paraná" />
+              <valueLabel name="7" value="Posadas" />
+              <valueLabel name="8" value="Gran Resistencia" />
+              <valueLabel name="9" value="Comodoro Rivadavia - Rada Tilly" />
+              <valueLabel name="10" value="Gran Mendoza" />
+              <valueLabel name="12" value="Corrientes" />
+              <valueLabel name="13" value="Gran Córdoba" />
+              <valueLabel name="14" value="Concordia" />
+              <valueLabel name="15" value="Formosa" />
+              <valueLabel name="17" value="Neuquén - Plottier" />
+              <valueLabel name="18" value="Santiago del Estero - La Banda" />
+              <valueLabel name="19" value="Jujuy - Palpalá" />
+              <valueLabel name="20" value="Río Gallegos" />
+              <valueLabel name="22" value="Gran Catamarca" />
+              <valueLabel name="23" value="Salta" />
+              <valueLabel name="25" value="La Rioja" />
+              <valueLabel name="26" value="San Luis - El Chorrillo" />
+              <valueLabel name="27" value="Gran San Juan" />
+              <valueLabel name="29" value="Gran Tucumán - Tafí Viejo" />
+              <valueLabel name="30" value="Santa Rosa - Toay" />
+              <valueLabel name="31" value="Ushuaia - Río Grande" />
+              <valueLabel name="32" value="Ciudad de Buenos Aires" />
+              <valueLabel name="33" value="Partidos del GBA" />
+              <valueLabel name="34" value="Mar del Plata - Batán" />
+              <valueLabel name="36" value="Río Cuarto" />
+              <valueLabel name="38" value="San Nicolás - Villa Constitución" />
+              <valueLabel name="91" value="Rawson - Trelew" />
+              <valueLabel name="93" value="Viedma - Carmen de Patagones" />
+              <valueLabel name="101" value="MISSING" />
+              <valueLabel name="100" value="NOTAPPLICABLE" />
+            </valueLabels>
+          </variable>
+          <entity name="VIVIENDA" pointer="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0004.ptr">
+            <variable name="CODUSU" label="Código para distinguir viviendas" type="STRING" size="8" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0011.rbf" />
+            <variable name="IV1" label="Tipo de vivienda" type="INTEGER" size="4" decimals="0" range="1 TO 6" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0012.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Casa" />
+                <valueLabel name="2" value="Departamento" />
+                <valueLabel name="3" value="Pieza de inquilinato" />
+                <valueLabel name="4" value="Pieza en hotel/pensión" />
+                <valueLabel name="5" value="Local no construido para habitación" />
+                <valueLabel name="6" value="Otro" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV3" label="Material predomintante de los pisos de vivienda" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0013.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Mosaico/baldosa/madera/cerámica/alfombra" />
+                <valueLabel name="2" value="Cemento/ladrillo fijo" />
+                <valueLabel name="3" value="Ladrillo suelto/tierra" />
+                <valueLabel name="4" value="Otro" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV4" label="Material cubierta exterior de los techos de vivienda" type="INTEGER" size="7" decimals="0" range="1 TO 9" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0014.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Membrana/cubierta asfáltica" />
+                <valueLabel name="2" value="Baldosa/losa sin cubierta" />
+                <valueLabel name="3" value="Pizarra/teja" />
+                <valueLabel name="4" value="Chapa de metal sin cubierta" />
+                <valueLabel name="5" value="Chapa de fibrocemento/plástico" />
+                <valueLabel name="6" value="Chapa de cartón" />
+                <valueLabel name="7" value="Caña/tabla/paja con barro/paja sola" />
+                <valueLabel name="9" value="N/S. Depto. de propiedad horizontal" />
+                <valueLabel name="99" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV5" label="Tenencia de cielorraso / revestimiento interior" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0015.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Sí" />
+                <valueLabel name="2" value="No" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV6" label="Provisión de agua en vivienda" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0016.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Por cañería dentro de la vivienda" />
+                <valueLabel name="2" value="Fuera de la vivienda pero dentro del terreno" />
+                <valueLabel name="3" value="Fuera del terreno" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV7" label="Procedencia del agua en vivienda" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0017.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Red pública (agua corriente)" />
+                <valueLabel name="2" value="Perforación con bomba a motor" />
+                <valueLabel name="3" value="Perforación con bomba manual" />
+                <valueLabel name="4" value="Otra fuente" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV8" label="Tenencia de baño / letrina en la vivienda" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0018.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Sí" />
+                <valueLabel name="2" value="No" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV9" label="Ubicación del baño o letrina" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0019.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Dentro de la vivienda" />
+                <valueLabel name="2" value="Fuera de la vivienda pero dentro del terreno" />
+                <valueLabel name="3" value="Fuera del terreno" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV10" label="Servicio sanitario" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0020.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Inodoro con botón/mochila/cadena y arrastre de agua" />
+                <valueLabel name="2" value="Inodoro sin botón/cadena y con arrastre de agua" />
+                <valueLabel name="3" value="Letrina (sin arrastre de agua)" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV11" label="Destino de eliminación de excretas" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0021.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="A red pública (cloaca)" />
+                <valueLabel name="2" value="A cámara séptica y pozo ciego" />
+                <valueLabel name="3" value="Sólo a pozo ciego" />
+                <valueLabel name="4" value="A hoyo/excavación en la tierra" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV121" label="Vivienda ubicada cerca de basurales (3 cuadras o menos)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0022.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Sí" />
+                <valueLabel name="2" value="No" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV122" label="Vivienda ubicada en zona inundable (en los últimos 12 meses)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0023.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Sí" />
+                <valueLabel name="2" value="No" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <variable name="IV123" label="Vivienda ubicada en villa de emergencia" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0024.rbf">
+              <valueLabels>
+                <valueLabel name="1" value="Sí" />
+                <valueLabel name="2" value="No" />
+                <valueLabel name="9" value="MISSING" />
+                <valueLabel name="0" value="NOTAPPLICABLE" />
+              </valueLabels>
+            </variable>
+            <entity name="HOGAR" pointer="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0005.ptr">
+              <variable name="NROHOGA" label="Código para distinguir hogares" type="STRING" size="1" decimals="0" range="" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0025.rbf">
+                <valueLabels>
+                  <valueLabel name="11" value="MISSING" />
+                  <valueLabel name="10" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="PONDERA" label="Ponderación" type="INTEGER" size="20" decimals="0" range="0 TO 999999" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0026.rbf">
+                <valueLabels>
+                  <valueLabel name="1000001" value="MISSING" />
+                  <valueLabel name="1000000" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="II1" label="Cantidad ambientes de uso exclusivo del hogar" type="INTEGER" size="7" decimals="0" range="0 TO 98" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0027.rbf">
+                <valueLabels>
+                  <valueLabel name="99" value="MISSING" />
+                  <valueLabel name="100" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="II41" label="Tenencia de cuarto de cocina" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0028.rbf">
+                <valueLabels>
+                  <valueLabel name="1" value="Sí" />
+                  <valueLabel name="2" value="No" />
+                  <valueLabel name="9" value="MISSING" />
+                  <valueLabel name="0" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="II42" label="Tenencia de lavadero" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0029.rbf">
+                <valueLabels>
+                  <valueLabel name="1" value="Sí" />
+                  <valueLabel name="2" value="No" />
+                  <valueLabel name="9" value="MISSING" />
+                  <valueLabel name="0" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="II43" label="Tenencia de garage" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0030.rbf">
+                <valueLabels>
+                  <valueLabel name="1" value="Sí" />
+                  <valueLabel name="2" value="No" />
+                  <valueLabel name="9" value="MISSING" />
+                  <valueLabel name="0" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="II7" label="Régimen de tenencia de la vivienda" type="INTEGER" size="7" decimals="0" range="1 TO 9" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0031.rbf">
+                <valueLabels>
+                  <valueLabel name="1" value="Propietario de la vivienda y el terreno" />
+                  <valueLabel name="2" value="Propietario de la vivienda solamente" />
+                  <valueLabel name="3" value="Inquilino/arrendatario de la vivienda" />
+                  <valueLabel name="4" value="Ocupante por pago de impuestos/expensas" />
+                  <valueLabel name="5" value="Ocupante en relación de dependencia" />
+                  <valueLabel name="6" value="Ocupante gratuito (con permiso)" />
+                  <valueLabel name="7" value="Ocupante de hecho (sin permiso)" />
+                  <valueLabel name="8" value="Está en sucesión" />
+                  <valueLabel name="9" value="Otra situación" />
+                  <valueLabel name="99" value="MISSING" />
+                  <valueLabel name="0" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="II8" label="Combustible usado principalmente para cocinar" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0032.rbf">
+                <valueLabels>
+                  <valueLabel name="1" value="Gas de red" />
+                  <valueLabel name="2" value="Gas de tubo/garrafa" />
+                  <valueLabel name="3" value="Kerosene/leña/carbón" />
+                  <valueLabel name="4" value="Otro" />
+                  <valueLabel name="9" value="MISSING" />
+                  <valueLabel name="0" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="II9" label="Baño (tenencia y uso)" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0033.rbf">
+                <valueLabels>
+                  <valueLabel name="1" value="Uso exclusivo del hogar" />
+                  <valueLabel name="2" value="Compartido con otro/s hogar/es de la misma vivienda" />
+                  <valueLabel name="3" value="Compartido con otra/s vivienda/s" />
+                  <valueLabel name="4" value="No tiene baño" />
+                  <valueLabel name="9" value="MISSING" />
+                  <valueLabel name="0" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="IXTOT" label="Cantidad de miembros del Hogar" type="INTEGER" size="7" decimals="0" range="0 TO 99" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0034.rbf">
+                <valueLabels>
+                  <valueLabel name="101" value="MISSING" />
+                  <valueLabel name="100" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="IXMEN10" label="Cantidad de miembros del Hogar menores de 10 años" type="INTEGER" size="7" decimals="0" range="0 TO 99" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0035.rbf">
+                <valueLabels>
+                  <valueLabel name="101" value="MISSING" />
+                  <valueLabel name="100" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="IXMAYEQ" label="Cantidad de miembros del Hogar de 10 y más años" type="INTEGER" size="7" decimals="0" range="0 TO 99" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0036.rbf">
+                <valueLabels>
+                  <valueLabel name="101" value="MISSING" />
+                  <valueLabel name="100" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <variable name="NBI1" label="Hacinamiento (personas por habitación)" type="INTEGER" size="4" decimals="0" range="1 TO 6" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0037.rbf">
+                <valueLabels>
+                  <valueLabel name="1" value="Hasta   0.50  personas por cuarto" />
+                  <valueLabel name="2" value="0.51 a 1  personas por cuarto" />
+                  <valueLabel name="3" value="1.01 a 1.50  personas por cuarto" />
+                  <valueLabel name="4" value="1.51  a 2  personas por cuarto" />
+                  <valueLabel name="5" value="2.01  a  3.00  personas por cuarto" />
+                  <valueLabel name="6" value="Más de 3.00  personas por cuarto" />
+                  <valueLabel name="9" value="MISSING" />
+                  <valueLabel name="0" value="NOTAPPLICABLE" />
+                </valueLabels>
+              </variable>
+              <entity name="PERSONA" pointer="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0006.ptr">
+                <variable name="COMPONEN" label="Número de componente" type="INTEGER" size="7" decimals="0" range="0 TO 99" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0038.rbf">
+                  <valueLabels>
+                    <valueLabel name="51" value="Servicio doméstico en hogares" />
+                    <valueLabel name="71" value="Pensionistas en hogares" />
+                    <valueLabel name="101" value="MISSING" />
+                    <valueLabel name="100" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH03" label="Relación de parentesco" type="INTEGER" size="4" decimals="0" range="1 TO 10" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0039.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Jefe" />
+                    <valueLabel name="2" value="Cónyuge/Pareja" />
+                    <valueLabel name="3" value="Hijo/Hijastro" />
+                    <valueLabel name="4" value="Yerno/Nuera" />
+                    <valueLabel name="5" value="Nieto" />
+                    <valueLabel name="6" value="Madre/Padre" />
+                    <valueLabel name="7" value="Suegro" />
+                    <valueLabel name="8" value="Hermano" />
+                    <valueLabel name="9" value="Otros familiares" />
+                    <valueLabel name="10" value="No familiares" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH04" label="Sexo" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0040.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Varón" />
+                    <valueLabel name="2" value="Mujer" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH06" label="Edad en años cumplidos" type="INTEGER" size="7" decimals="0" range="0 TO 98" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0041.rbf">
+                  <valueLabels>
+                    <valueLabel name="98" value="98 y más años" />
+                    <valueLabel name="101" value="MISSING" />
+                    <valueLabel name="100" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH07" label="Situación conyugal" type="INTEGER" size="4" decimals="0" range="1 TO 5" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0042.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Unido" />
+                    <valueLabel name="2" value="Casado" />
+                    <valueLabel name="3" value="Separado o divorciado" />
+                    <valueLabel name="4" value="Viudo" />
+                    <valueLabel name="5" value="Soltero" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH08" label="Tipo de cobertura médica" type="INTEGER" size="10" decimals="0" range="1 TO 123" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0043.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Obra social (incluye PAMI)" />
+                    <valueLabel name="2" value="Mutual/Prepaga/Servicio de emergencia" />
+                    <valueLabel name="3" value="Planes y seguros públicos" />
+                    <valueLabel name="4" value="No paga ni le descuentan" />
+                    <valueLabel name="9" value="Ns./Nr." />
+                    <valueLabel name="12" value="Obra social y mutual/prepaga/servicio de emergencia" />
+                    <valueLabel name="13" value="Obra social y planes y seguros públicos" />
+                    <valueLabel name="23" value="Mutual/prepaga/servicio de emergencia/planes y seguros públi" />
+                    <valueLabel name="123" value="Obra social, mutual/prepaga/servicio de emergencia y planes" />
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="124" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH09" label="¿Sabe leer y escribir?" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0044.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="3" value="Menor de 2 años" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH10" label="Asistencia a establecimiento escolar (población de 2 años y más)" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0045.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí, asiste" />
+                    <valueLabel name="2" value="No asiste, pero asistió" />
+                    <valueLabel name="3" value="Nunca asistió" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH11" label="Sector de gestión del establecimiento educativo (población que asiste a algún establecimiento educativo)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0046.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Público" />
+                    <valueLabel name="2" value="Privado" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH15" label="Dónde nació" type="INTEGER" size="4" decimals="0" range="1 TO 5" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0047.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="En esta localidad" />
+                    <valueLabel name="2" value="En otra localidad de esta provincia" />
+                    <valueLabel name="3" value="En otra provincia" />
+                    <valueLabel name="4" value="En un país limítrofe" />
+                    <valueLabel name="5" value="En otro país" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CH16" label="Dónde vivía hace 5 años" type="INTEGER" size="4" decimals="0" range="1 TO 6" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0048.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="En esta localidad" />
+                    <valueLabel name="2" value="En otra localidad de esta provincia" />
+                    <valueLabel name="3" value="En otra provincia" />
+                    <valueLabel name="4" value="En un país limítrofe" />
+                    <valueLabel name="5" value="En otro país" />
+                    <valueLabel name="6" value="No había nacido" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="NIVELED" label="Nivel educativo" type="INTEGER" size="4" decimals="0" range="1 TO 7" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0049.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Primaria Incompleta (incluye educación especial)" />
+                    <valueLabel name="2" value="Primaria Completa" />
+                    <valueLabel name="3" value="Secundaria Incompleta" />
+                    <valueLabel name="4" value="Secundaria Completa" />
+                    <valueLabel name="5" value="Superior Universitaria Incompleta" />
+                    <valueLabel name="6" value="Superior Universitaria Completa" />
+                    <valueLabel name="7" value="Sin instrucción" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="ESTADO" label="Condición de actividad" type="INTEGER" size="4" decimals="0" range="0 TO 9" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0050.rbf">
+                  <valueLabels>
+                    <valueLabel name="0" value="Entrevista individual no realizada (no respuesta al cuestion" />
+                    <valueLabel name="1" value="Ocupado" />
+                    <valueLabel name="2" value="Desocupado" />
+                    <valueLabel name="3" value="Inactivo" />
+                    <valueLabel name="4" value="Menor de 10 años" />
+                    <valueLabel name="11" value="MISSING" />
+                    <valueLabel name="10" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CATOCUP" label="Categoría ocupacional (para ocupados y desocupados con ocupación anterior)" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0051.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Patrón" />
+                    <valueLabel name="2" value="Cuenta propia" />
+                    <valueLabel name="3" value="Obrero o empleado" />
+                    <valueLabel name="4" value="Trabajador familiar sin remuneración" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CATINAC" label="Población Inactiva - Categoría de inactividad" type="INTEGER" size="4" decimals="0" range="1 TO 7" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0052.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Jubilado/pensionado" />
+                    <valueLabel name="2" value="Rentista" />
+                    <valueLabel name="3" value="Estudiante" />
+                    <valueLabel name="4" value="Ama de casa" />
+                    <valueLabel name="5" value="Menor de 6 años" />
+                    <valueLabel name="6" value="Discapacitado" />
+                    <valueLabel name="7" value="Otros" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C1" label="Población Desocupada - Para conseguir trabajo hizo contactos, entrevistas" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0053.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C2" label="Población Desocupada - Para conseguir trabajo mandó currículum, puso o contestó avisos (diarios, internet)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0054.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C3" label="Población Desocupada - Para conseguir trabajo se presentó en establecimientos" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0055.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C4" label="Población Desocupada - Para conseguir trabajo hizo algo para ponerse por su cuenta" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0056.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C5" label="Población Desocupada - Para conseguir trabajo puso carteles en negocios, preguntó en el barrio" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0057.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C6" label="Población Desocupada - Para conseguir trabajo consultó a parientes, amigos" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0058.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C7" label="Población Desocupada - Para conseguir trabajo se anotó en bolsas, listas, planes de empleo, agencias, contratistas, o alguien le está buscando trabajo" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0059.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02C8" label="Población Desocupada - Para conseguir trabajo lo buscó de otra forma activa" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0060.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02H" label="Población Inactiva de 10 años y más - Buscó trabajo en los últimos 12 meses" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0061.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP02I" label="Población Inactiva de 10 años y más - Trabajó en algún momento en los últimos 12 meses" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0062.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP3ETOT" label="Población Ocupada - Total de horas que trabajó en la semana en la ocupación principal (ocupados que trabajaron en la semana de referencia)" type="INTEGER" size="10" decimals="0" range="1 TO 168" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0063.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP3FTOT" label="Población Ocupada - Total de horas que trabajó en la semana en otras ocupaciones (ocupados que trabajaron en la semana de referencia)" type="INTEGER" size="10" decimals="0" range="1 TO 168" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0064.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP03G" label="Población Ocupada - La semana pasada quería trabajar más horas" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0065.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP03H" label="Población Ocupada - Disponibilidad para trabajar más horas (ocupados que querían trabajar más horas)" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0066.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí, la semana pasada" />
+                    <valueLabel name="2" value="Sí, a más tardar en dos semanas" />
+                    <valueLabel name="3" value="No podía trabajar más horas" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP03I" label="Población Ocupada - En los últimos 30 días, ¿buscó trabajar más horas?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0067.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP03J" label="Población Ocupada - Aparte de este/os trabajo/s, ¿estuvo buscando algún empleo/ocupación/actividad?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0068.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="INTENSI" label="Población Ocupada - Intensidad de la ocupación" type="INTEGER" size="4" decimals="0" range="1 TO 5" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0069.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Subocupación horaria Demandante" />
+                    <valueLabel name="2" value="Subocupación horaria No Demandante" />
+                    <valueLabel name="3" value="Ocupación plena" />
+                    <valueLabel name="4" value="Sobreocupación horaria" />
+                    <valueLabel name="5" value="Ocupado que no trabajó en la semana" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP04A" label="Población Ocupada - Sector de gestión de la empresa en la que trabaja (en la ocupación principal)" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0070.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Estatal" />
+                    <valueLabel name="2" value="Privado" />
+                    <valueLabel name="3" value="De otro tipo" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07C" label="Asalariados - El empleo tiene tiempo de finalización (excepto servicio doméstico)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0071.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí (incluye changa, trabajo transitorio, por tarea u obra, suplencia, etc)" />
+                    <valueLabel name="2" value="No (Incluye permanente, fijo, estable, de planta)" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07F1" label="Asalariados - ¿En este trabajo le dan de comer gratis?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0072.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07F2" label="Asalariados - ¿En este trabajo le dan vivienda?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0073.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07F3" label="Asalariados - ¿En este trabajo le dan algún producto o mercadería?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0074.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07F4" label="Asalariados - ¿En este trabajo le dan algún otro beneficio? (automóvil, teléfono celular, pasajes, etc.)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0075.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07G1" label="Asalariados - ¿En este trabajo tiene vacaciones pagas?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0076.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07G2" label="Asalariados - ¿En este trabajo tiene aguinaldo?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0077.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07G3" label="Asalariados - ¿En este trabajo tiene días pagos por enfermedad?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0078.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07G4" label="Asalariados - ¿En este trabajo tiene obra social?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0079.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07H" label="Asalariados - ¿Por ese trabajo tiene descuento jubilatorio?" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0080.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP07I" label="Asalariados - ¿Aporta por sí mismo a algún sistema jubilatorio? (asalariados sin descuento jubilatorio)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0081.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP10C" label="Población Desocupada - Hizo algún algún trabajo/changa en el tiempo en que buscó trabajo" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0082.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sí" />
+                    <valueLabel name="2" value="No" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PP10D" label="Población Desocupada - Condición de desocupación" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0083.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Ha trabajado antes" />
+                    <valueLabel name="2" value="Busca trabajo por primera vez" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TIENECOB" label="Cobertura de salud" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0084.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Tiene" />
+                    <valueLabel name="2" value="No tiene" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="GRDGRUP" label="Edad en grandes grupos" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0085.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="0 a 14" />
+                    <valueLabel name="2" value="15 a 64" />
+                    <valueLabel name="3" value="65 y más" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="QUINQUEN" label="Edad en grupos quinquenales" type="INTEGER" size="5" decimals="0" range="1 TO 16" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0086.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="0 a 4" />
+                    <valueLabel name="2" value="5 a 9" />
+                    <valueLabel name="3" value="10 a 14" />
+                    <valueLabel name="4" value="15 a 19" />
+                    <valueLabel name="5" value="20 a 24" />
+                    <valueLabel name="6" value="25 a 29" />
+                    <valueLabel name="7" value="30 a 34" />
+                    <valueLabel name="8" value="35 a 39" />
+                    <valueLabel name="9" value="40 a 44" />
+                    <valueLabel name="10" value="45 a 49" />
+                    <valueLabel name="11" value="50 a 54" />
+                    <valueLabel name="12" value="55 a 59" />
+                    <valueLabel name="13" value="60 a 64" />
+                    <valueLabel name="14" value="65 a 69" />
+                    <valueLabel name="15" value="70 a 74" />
+                    <valueLabel name="16" value="75 y más" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="PEA" label="Condición de actividad agrupada" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0087.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Población Activa" />
+                    <valueLabel name="2" value="Población Inactiva" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="OCUPACIO" label="Población Ocupada - Cantidad de ocupaciones (ocupados que trabajaron en la semana de referencia)" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0088.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Sólo una" />
+                    <valueLabel name="2" value="Más de una" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TAMANO" label="Población Ocupada - Tamaño del establecimiento de la ocupación principal (excepto servicio doméstico)" type="INTEGER" size="7" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0089.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Hasta 5" />
+                    <valueLabel name="2" value="De 6 a 40" />
+                    <valueLabel name="3" value="Más de 40" />
+                    <valueLabel name="99" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CALOCUP" label="Población Ocupada - Calificación de la ocupación principal" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0090.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Profesional" />
+                    <valueLabel name="2" value="Técnica" />
+                    <valueLabel name="3" value="Operativa" />
+                    <valueLabel name="4" value="No calificada" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="ANTIG" label="Población Ocupada - Antigüedad de la ocupación principal" type="INTEGER" size="4" decimals="0" range="1 TO 6" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0091.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Menos de un mes" />
+                    <valueLabel name="2" value="De 1 a 3 meses" />
+                    <valueLabel name="3" value="Más de 3 a 6 meses" />
+                    <valueLabel name="4" value="Más de 6 meses a 1 año" />
+                    <valueLabel name="5" value="Más de 1 a 5 años" />
+                    <valueLabel name="6" value="Más de 5 años" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="CATOCU" label="Población Ocupada - Categoría ocupacional" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0092.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Patrón" />
+                    <valueLabel name="2" value="Cuenta propia" />
+                    <valueLabel name="3" value="Obrero o empleado" />
+                    <valueLabel name="4" value="Trabajador familiar sin remuneración" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="HORASAG" label="Población Ocupada - Cantidad de horas que trabajó en la semana en la ocupación principal (Agrupada-ocupados que trabajaron en la semana de referencia)" type="INTEGER" size="4" decimals="0" range="1 TO 5" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0093.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="1-14" />
+                    <valueLabel name="2" value="15-34" />
+                    <valueLabel name="3" value="35-45" />
+                    <valueLabel name="4" value="46-60" />
+                    <valueLabel name="5" value="61 y más" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="HORASAG2" label="Población Ocupada - Cantidad de horas que trabajó en la semana en otras ocupaciones (Agrupada-ocupados que trabajaron en la semana de referencia)" type="INTEGER" size="4" decimals="0" range="1 TO 5" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0094.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="1-14" />
+                    <valueLabel name="2" value="15-34" />
+                    <valueLabel name="3" value="35-45" />
+                    <valueLabel name="4" value="46-60" />
+                    <valueLabel name="5" value="61 y más" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="ULTIMAOC" label="Población Desocupada - Tiempo sin trabajar (desocupados con ocupación anterior)" type="INTEGER" size="4" decimals="0" range="1 TO 4" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0095.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Tres meses o menos" />
+                    <valueLabel name="2" value="Más de 3 meses a 12 meses" />
+                    <valueLabel name="3" value="Más de un año a tres años" />
+                    <valueLabel name="4" value="Más de tres años" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="DESOCANT" label="Población Desocupada - Periodo de búsqueda de trabajo" type="INTEGER" size="4" decimals="0" range="1 TO 3" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0096.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Tres meses o menos" />
+                    <valueLabel name="2" value="Más de 3 meses a 12 meses" />
+                    <valueLabel name="3" value="Más de un año" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="DESONUE" label="Población Desocupada - Condición de desocupación" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0097.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Busca trabajo por primera vez" />
+                    <valueLabel name="2" value="Ha trabajado antes" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="OCUPADOS" label="Ocupados" type="INTEGER" size="4" decimals="0" range="1 TO 1" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0098.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Ocupados" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="INACTIVO" label="Inactivos" type="INTEGER" size="4" decimals="0" range="1 TO 1" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0099.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Inactivos" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="DESOCUPA" label="Desocupados" type="INTEGER" size="4" decimals="0" range="1 TO 1" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0100.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Desocupados" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="JEFES" label="Posición en el hogar" type="INTEGER" size="4" decimals="0" range="1 TO 2" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0101.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="Jefes" />
+                    <valueLabel name="2" value="No Jefes" />
+                    <valueLabel name="9" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TASAACT" label="Tasa de Actividad" type="INTEGER" size="10" decimals="0" range="0 TO 100" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0102.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="101" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TASAEMP" label="Tasa de Empleo" type="INTEGER" size="10" decimals="0" range="0 TO 100" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0103.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="101" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TASADES" label="Tasa de Desocupación" type="INTEGER" size="10" decimals="0" range="0 TO 100" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0104.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="101" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TASASUB" label="Tasa de Subocupación Horaria" type="INTEGER" size="10" decimals="0" range="0 TO 100" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0105.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="101" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TASASUD" label="Tasa de Subocupación Demandante" type="INTEGER" size="10" decimals="0" range="0 TO 100" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0106.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="101" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="TASASUN" label="Tasa de Subocupación No Demandante" type="INTEGER" size="10" decimals="0" range="0 TO 100" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0107.rbf">
+                  <valueLabels>
+                    <valueLabel name="999" value="MISSING" />
+                    <valueLabel name="101" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="RAMA2" label="Población Ocupada - Rama de actividad de la ocupación principal (Mercosur 2000)" type="INTEGER" size="7" decimals="0" range="1 TO 17" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0108.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="'A - Agricultura, ganadería, pesca y silvicultura'" />
+                    <valueLabel name="2" value="'B - Pesca y servicios conexos'" />
+                    <valueLabel name="3" value="'C-  Explotación de minas y canteras'" />
+                    <valueLabel name="4" value="'D - Industria manufacturera'" />
+                    <valueLabel name="5" value="'E - Suministro de electricidad, gas y agua'" />
+                    <valueLabel name="6" value="'F - Construcción'" />
+                    <valueLabel name="7" value="'G - Comercio al por mayor y al por menor; reparación de vehiculos automotores, motocicletas, efectos personales y enseres domésticos'" />
+                    <valueLabel name="8" value="'H - Servicio de hotelería y restaurantes'" />
+                    <valueLabel name="9" value="'I -  Servicio de transporte, almacenamiento y comunicaciones'" />
+                    <valueLabel name="10" value="'J - Intermediación financiera y otros servicios financieros'" />
+                    <valueLabel name="11" value="'K - Actividades inmobiliarias, empresariales y de alquiler'" />
+                    <valueLabel name="12" value="'L - Administración pública, defensa y seguridad social obligatoria'" />
+                    <valueLabel name="13" value="'M - Enseñanza'" />
+                    <valueLabel name="14" value="'N - Servicios sociales y de salud'" />
+                    <valueLabel name="15" value="'O - Servicios comunitarios, sociales y personales N.C.P.'" />
+                    <valueLabel name="16" value="'P - Servicios de hogares privados que contratan servicio doméstico'" />
+                    <valueLabel name="17" value="'Q - Servicios de organizaciones y órganos extraterritoriales'" />
+                    <valueLabel name="100" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+                <variable name="RAMA2CAE" label="Población Ocupada - Rama de Actividad de la ocupación principal (CAES 1.0)" type="INTEGER" size="7" decimals="0" range="1 TO 21" filter="" data="..\..\..\..\..\..\..\..\Redatam\Encuestas\EPH\BASE EPH FINAL0109.rbf">
+                  <valueLabels>
+                    <valueLabel name="1" value="A - Agricultura, ganadería, caza, silvicultura y pesca" />
+                    <valueLabel name="2" value="B - Explotación de minas y canteras" />
+                    <valueLabel name="3" value="C - Industria manufacturera" />
+                    <valueLabel name="4" value="D - Suministro de electricidad, gas, vapor y aire" />
+                    <valueLabel name="5" value="E - Suministro de agua: alcantarillado, gestión de desechos y actividades de saneamiento" />
+                    <valueLabel name="6" value="F - Construcción" />
+                    <valueLabel name="7" value="G - Comercio al por mayor y al por menor; reparación de vehiculos automotores y motocicletas" />
+                    <valueLabel name="8" value="H - Transporte y almacenamiento" />
+                    <valueLabel name="9" value="I -  Alojamiento y servicios de comida" />
+                    <valueLabel name="10" value="J - Información y comunicación" />
+                    <valueLabel name="11" value="K - Actividades financieras y de seguros" />
+                    <valueLabel name="12" value="L - Actividades inmobiliarias" />
+                    <valueLabel name="13" value="M - Actividades profesionales, científicas y técnicas" />
+                    <valueLabel name="14" value="N - Actividades administrativas y servicios de apoyo" />
+                    <valueLabel name="15" value="O - Administración pública y defensa; planes de seguro social" />
+                    <valueLabel name="16" value="P - Enseñanza" />
+                    <valueLabel name="17" value="Q - Salud humana y servicios sociales" />
+                    <valueLabel name="18" value="R - Artes, entreteniemiento y recreación" />
+                    <valueLabel name="19" value="S - Otras actividades de servicios" />
+                    <valueLabel name="20" value="T - Actividades de los hogares como empleadores de personal doméstico; actividades de los hogares como productores de bi" />
+                    <valueLabel name="21" value="U - Actividades de organizaciones y organismos extraterritoriales" />
+                    <valueLabel name="100" value="MISSING" />
+                    <valueLabel name="0" value="NOTAPPLICABLE" />
+                  </valueLabels>
+                </variable>
+              </entity>
+            </entity>
+          </entity>
+        </entity>
+      </entity>
+    </entity>
+  </entity>
+</database>

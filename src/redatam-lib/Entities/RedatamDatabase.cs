@@ -17,25 +17,45 @@ namespace RedatamLib
 		{
 			FuzzyEntityParser = new FuzzyEntityParser(this);
 		}
-		
+
+
+		public long GetTotalDataItems()
+		{
+			long ret = 0;
+			ret += GetEntitiesTotalDataItems(Entities, null);
+			return ret;
+		}
+
+		private long GetEntitiesTotalDataItems(List<Entity> entities, Entity parent)
+		{
+			long ret = 0;
+			foreach (var entity in entities)
+			{
+				ret += (entity.SelectedVariables.Count + 2) * entity.RowsCount;
+
+				ret += GetEntitiesTotalDataItems(entity.Children, entity);
+			}
+			return ret;
+		}
 
 		public long GetTotalRowsSize()
 		{
 			long ret = 0;
-			ret += GetEntitiesRowsSize(Entities);
+			ret += GetEntitiesRowsSize(Entities, null);
 			return ret;
 		}
 
-		private long GetEntitiesRowsSize(List<Entity> entities)
+		private long GetEntitiesRowsSize(List<Entity> entities, Entity parent)
 		{
 			long ret = 0;
 			foreach (var entity in entities)
 			{
 				entity.OpenPointer();
-				ret += entity.GetPointerRows();
+				long entityCount = entity.CalculateRowCount(parent);
+				ret += entityCount;
 				entity.ClosePointer();
 
-				ret += GetEntitiesRowsSize(entity.Children);
+				ret += GetEntitiesRowsSize(entity.Children, entity);
 			}
 			return ret;
 		}
@@ -70,5 +90,22 @@ namespace RedatamLib
 				throw new Exception("An error ocurred while parsing the dictionary variables and labels (" + e.Message + ").");
 			}
 		}
+
+		public List<Entity> GetEntitiesList()
+		{
+			List<Entity> ret = new List<Entity>();
+			doGetEntitiesList(ret, this.Entities);
+			return ret;
+		}
+
+		private void doGetEntitiesList(List<Entity> ret, List<Entity> list)
+		{
+			foreach (Entity e in list)
+			{
+				ret.Add(e);
+				doGetEntitiesList(ret, e.Children);
+			}
+		}
+
 	}
 }

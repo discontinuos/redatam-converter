@@ -35,6 +35,10 @@ namespace RedatamLib
 			return 0;
 		}
 
+		public uint ReadInt32At(long pos)
+		{
+			return 0;
+		}
 		public uint ReadLastInt32()
 		{
 			return 0;

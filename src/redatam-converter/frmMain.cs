@@ -20,11 +20,12 @@ namespace RedatamConverter
 		RedatamDatabase db;
 		Type exporterType;
 		long totalRows;
+		long globalDataItemsCount;
 		DateTime startTime;
 		string folder;
 		Exception exception;
 		List<string> entities = new List<string>();
-		List<string> skipColumns = new List<string>() { "ValuesLabelsRaw", "ValuesLabels" };
+		List<string> skipColumns = new List<string>() { "ValuesLabelsRaw", "ValueLabels", "Selected" };
 		bool cancelled = false;
 		cStatus status = new cStatus();
 		
@@ -64,19 +65,15 @@ namespace RedatamConverter
 
 		private void btnOpen_Click(object sender, EventArgs e)
 		{
-			// Create an instance of the open file dialog box.
 			OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-			// Set filter options and filter index.
 			openFileDialog1.Filter = "REDATAM dictionary (.dic)|*.dic|All Files (*.*)|*.*";
 			openFileDialog1.FilterIndex = 1;
 
 			openFileDialog1.Multiselect = true;
 
-			// Call the ShowDialog method to show the dialog box.
 			DialogResult userClickedOK = openFileDialog1.ShowDialog(this);
 
-			// Process input if the user clicked OK.
 			if (userClickedOK == System.Windows.Forms.DialogResult.OK)
 			{
 				lblFile.Text = openFileDialog1.FileName;
@@ -95,6 +92,7 @@ namespace RedatamConverter
 			try
 			{
 				db.OpenDictionary(file);
+				ValidateIntegrity();
 			}
 			catch (Exception e)
 			{
@@ -107,6 +105,15 @@ namespace RedatamConverter
 				FillEntitiesListView();
 			}
 			EnableSaveButtons(true);
+		}
+
+		private void ValidateIntegrity()
+		{
+			exporterType = typeof(CSVExporter);			
+			checkFiles(false);
+			checkFileSizes(false);
+			exporterType = null;
+			
 		}
 
 		private void EnableSaveButtons(bool value)
@@ -200,6 +207,7 @@ namespace RedatamConverter
 							item.SubItems.Add(value);
 					}
 				}
+				item.Checked = v.Selected;
 				lwVariables.Items.Add(item);
 			}
 		}
@@ -258,10 +266,14 @@ namespace RedatamConverter
 			status.lblRows.Text = MakeStatusLine(exporter.CurrentEntityTotal, exporter.EntityCurrentRow); ;
 			status.lblTotals.Text = MakeStatusLine(this.totalRows, exporter.GlobalCurrentRow);
 			double currentProgress = (exporter.GlobalCurrentRow / (double) this.totalRows);
-			TimeSpan remaining = TimeSpan.FromSeconds(((DateTime.Now - this.startTime).TotalSeconds / exporter.GlobalCurrentRow * this.totalRows));
 
-			status.lblEllapsed.Text = FormatTimeSpan(DateTime.Now - this.startTime, true);
-			status.lblRemaining.Text = FormatTimeSpan(remaining);
+			//TimeSpan remaining = TimeSpan.FromSeconds(((DateTime.Now - this.startTime).TotalSeconds / exporter.GlobalCurrentRow * this.totalRows));
+			TimeSpan ellapsed = (DateTime.Now - this.startTime);
+			TimeSpan estimatedTotalTime = TimeSpan.FromSeconds(ellapsed.TotalSeconds / exporter.GlobalDataItemsCurrent * globalDataItemsCount);
+			TimeSpan remaining = estimatedTotalTime - ellapsed;
+
+			status.lblEllapsed.Text = FormatTimeSpan(ellapsed, true) + ".";
+			status.lblRemaining.Text = FormatTimeSpan(remaining) + ".";
 			status.progress.Value = (int)(100 * currentProgress);
 
 			if (cancelled)
@@ -299,10 +311,15 @@ namespace RedatamConverter
 		private string FormatTimeSpan(TimeSpan remaining, bool seconds = false)
 		{
 			TimeSpan show;
+			if (remaining.TotalSeconds < 60)
+				seconds = true;
 			if (seconds)
 				show = TimeSpan.FromSeconds((int)remaining.TotalSeconds);
 			else
-				show = TimeSpan.FromMinutes((int)remaining.TotalMinutes);
+			{
+
+				show = TimeSpan.FromMinutes(Math.Round(remaining.TotalMinutes, 0));
+			}
 			return ToReadableString(show);
 		}
 
@@ -364,6 +381,7 @@ namespace RedatamConverter
 		{
 			exception = null;
 			totalRows = db.GetTotalRowsSize();
+			globalDataItemsCount = db.GetTotalDataItems();
 			status.InitializeProgress(lblFile.Text, folder);
 			cancelled = false;
 			startTime = DateTime.Now;
@@ -383,11 +401,36 @@ namespace RedatamConverter
 				folderTo.Text = folderBrowserDialog1.SelectedPath;
 				if (checkFiles() == false)
 					return;
+				if (checkFileSizes() == false)
+					return;
 				SaveData(folderTo.Text);
 			}
 		}
 
-		private bool checkFiles()
+		private bool checkFileSizes(bool askForAction = true)
+		{
+			IExporter export = Activator.CreateInstance(exporterType, db) as IExporter;
+			export.CallBack = new EventHandler(updateCallback);
+			string[] files = export.GetInvalidSizes();
+			if (files.Length == 0)
+				return true;
+			else
+			{
+				var messageBoxButtons = MessageBoxButtons.OK;
+				string question = "";
+				if (askForAction)
+				{
+					question = "\n\nDo you want to export the data anyway? Missing data will be assigned zero (0) values.";
+					messageBoxButtons = MessageBoxButtons.YesNoCancel;
+				}
+				return MessageBox.Show(this,
+								"The following data files have invalid sizes. This means that values in the corresponding variables cannot be trusted (using Redatam xProcess or Redatam Converter): \n\n-" +
+								string.Join("\n- ", files) + question,
+								"Exporting", messageBoxButtons, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes;
+			}
+		}
+
+		private bool checkFiles(bool askForAction = true)
 		{
 			IExporter export = Activator.CreateInstance(exporterType, db) as IExporter;
 			export.CallBack = new EventHandler(updateCallback);
@@ -395,10 +438,19 @@ namespace RedatamConverter
 			if (files.Length == 0)
 				return true;
 			else
+			{
+				var messageBoxButtons = MessageBoxButtons.OK;
+				string question = "";
+				if (askForAction)
+				{
+					question = "\n\nDo you want to export the data anyway? Missing data will be assigned zero (0) values.";
+					messageBoxButtons = MessageBoxButtons.YesNoCancel;
+				}
 				return MessageBox.Show(this,
 								"The following data files are missing: \n\n-" +
-								string.Join("\n- ", files) + "\n\nDo you want to export the data anyway? Missing data will be assigned zero (0) values.",
-								"Exporting", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes;
+								string.Join("\n- ", files) + question,
+								"Exporting", messageBoxButtons, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes;
+			}
 		}
 
 		private void SaveData(string targetFolder)
@@ -575,6 +627,34 @@ namespace RedatamConverter
 		{
 			foreach (var file in Directory.GetFiles(outpath, "*.xml"))
 				File.Delete(file);
+		}
+
+		private void btnCheckAll_Click(object sender, EventArgs e)
+		{
+			foreach (ListViewItem item in lwVariables.Items)
+			{
+				CheckVariableItem(item, true);
+			}
+		}
+
+		private void btnCheckNone_Click(object sender, EventArgs e)
+		{
+			foreach (ListViewItem item in lwVariables.Items)
+			{
+				CheckVariableItem(item, false); 
+			}
+		}
+
+		private void CheckVariableItem(ListViewItem item, bool state)
+		{
+			item.Checked = state;
+			((Variable)item.Tag).Selected = state;
+		}
+
+		private void lwVariables_ItemChecked(object sender, ItemCheckedEventArgs e)
+		{
+			((Variable)e.Item.Tag).Selected = e.Item.Checked;
+			
 		}
 
 

@@ -38,6 +38,8 @@
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btnTest = new System.Windows.Forms.Button();
+			this.btnRegenTest = new System.Windows.Forms.Button();
 			this.folderTo = new System.Windows.Forms.Label();
 			this.lblFile = new System.Windows.Forms.Label();
 			this.btnExportMetadata = new System.Windows.Forms.Button();
@@ -50,8 +52,8 @@
 			this.btnCopyEntities = new System.Windows.Forms.Button();
 			this.btnCopyVariables = new System.Windows.Forms.Button();
 			this.btnCopyLabels = new System.Windows.Forms.Button();
-			this.btnTest = new System.Windows.Forms.Button();
-			this.btnRegenTest = new System.Windows.Forms.Button();
+			this.btnCheckAll = new System.Windows.Forms.Button();
+			this.btnCheckNone = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -82,6 +84,7 @@
 			this.lwVariables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.lwVariables.CheckBoxes = true;
 			this.lwVariables.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.columnHeader3});
@@ -93,6 +96,7 @@
 			this.lwVariables.TabIndex = 2;
 			this.lwVariables.UseCompatibleStateImageBehavior = false;
 			this.lwVariables.View = System.Windows.Forms.View.Details;
+			this.lwVariables.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lwVariables_ItemChecked);
 			this.lwVariables.SelectedIndexChanged += new System.EventHandler(this.lwVariables_SelectedIndexChanged);
 			// 
 			// columnHeader2
@@ -149,6 +153,28 @@
 			this.groupBox1.TabIndex = 3;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Actions";
+			// 
+			// btnTest
+			// 
+			this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnTest.Location = new System.Drawing.Point(489, 19);
+			this.btnTest.Name = "btnTest";
+			this.btnTest.Size = new System.Drawing.Size(116, 23);
+			this.btnTest.TabIndex = 7;
+			this.btnTest.Text = "Run tests";
+			this.btnTest.UseVisualStyleBackColor = true;
+			this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+			// 
+			// btnRegenTest
+			// 
+			this.btnRegenTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRegenTest.Location = new System.Drawing.Point(366, 19);
+			this.btnRegenTest.Name = "btnRegenTest";
+			this.btnRegenTest.Size = new System.Drawing.Size(116, 23);
+			this.btnRegenTest.TabIndex = 8;
+			this.btnRegenTest.Text = "Generate test data";
+			this.btnRegenTest.UseVisualStyleBackColor = true;
+			this.btnRegenTest.Click += new System.EventHandler(this.btnRegenTest_Click);
 			// 
 			// folderTo
 			// 
@@ -273,27 +299,27 @@
 			this.btnCopyLabels.UseVisualStyleBackColor = true;
 			this.btnCopyLabels.Click += new System.EventHandler(this.btnCopyLabels_Click);
 			// 
-			// btnTest
+			// btnCheckAll
 			// 
-			this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnTest.Location = new System.Drawing.Point(489, 19);
-			this.btnTest.Name = "btnTest";
-			this.btnTest.Size = new System.Drawing.Size(116, 23);
-			this.btnTest.TabIndex = 7;
-			this.btnTest.Text = "Run tests";
-			this.btnTest.UseVisualStyleBackColor = true;
-			this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+			this.btnCheckAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnCheckAll.Location = new System.Drawing.Point(202, 171);
+			this.btnCheckAll.Name = "btnCheckAll";
+			this.btnCheckAll.Size = new System.Drawing.Size(79, 21);
+			this.btnCheckAll.TabIndex = 6;
+			this.btnCheckAll.Text = "Select all";
+			this.btnCheckAll.UseVisualStyleBackColor = true;
+			this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
 			// 
-			// btnRegenTest
+			// btnCheckNone
 			// 
-			this.btnRegenTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnRegenTest.Location = new System.Drawing.Point(366, 19);
-			this.btnRegenTest.Name = "btnRegenTest";
-			this.btnRegenTest.Size = new System.Drawing.Size(116, 23);
-			this.btnRegenTest.TabIndex = 8;
-			this.btnRegenTest.Text = "Generate test data";
-			this.btnRegenTest.UseVisualStyleBackColor = true;
-			this.btnRegenTest.Click += new System.EventHandler(this.btnRegenTest_Click);
+			this.btnCheckNone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnCheckNone.Location = new System.Drawing.Point(287, 171);
+			this.btnCheckNone.Name = "btnCheckNone";
+			this.btnCheckNone.Size = new System.Drawing.Size(78, 21);
+			this.btnCheckNone.TabIndex = 6;
+			this.btnCheckNone.Text = "Select none";
+			this.btnCheckNone.UseVisualStyleBackColor = true;
+			this.btnCheckNone.Click += new System.EventHandler(this.btnCheckNone_Click);
 			// 
 			// frmMain
 			// 
@@ -301,6 +327,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(635, 452);
 			this.Controls.Add(this.btnCopyLabels);
+			this.Controls.Add(this.btnCheckNone);
+			this.Controls.Add(this.btnCheckAll);
 			this.Controls.Add(this.btnCopyVariables);
 			this.Controls.Add(this.btnCopyEntities);
 			this.Controls.Add(this.label3);
@@ -349,6 +377,8 @@
 		private System.Windows.Forms.Button btnExportMetadata;
 		private System.Windows.Forms.Button btnTest;
 		private System.Windows.Forms.Button btnRegenTest;
+		private System.Windows.Forms.Button btnCheckAll;
+		private System.Windows.Forms.Button btnCheckNone;
 	}
 }
 

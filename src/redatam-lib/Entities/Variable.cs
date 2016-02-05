@@ -33,6 +33,8 @@ namespace RedatamLib
 		public string Filter;
 		public int Size;
 		public string Filename;
+		private bool BinaryDataSet = false;
+		public bool Selected = true;
 
 		public void ParseValueLabels()
 		{
@@ -153,6 +155,10 @@ namespace RedatamLib
 					this.Size = 16;
 					this.Type = "INT16";
 					break;
+				case "BIN":
+					this.Size = int.Parse(size);
+					this.BinaryDataSet = true;
+					break;
 				case "PCK":
 				case "CHR":
 					this.Size = int.Parse(size);
@@ -169,7 +175,7 @@ namespace RedatamLib
 			{
 				//ubica el nombre de archivo y el tamaño de variable
 				string file = ResolveDataFilename();
-				reader = new CursorReader(file, this.Type == "STRING", Size);
+				reader = new CursorReader(file, this.Type == "STRING", BinaryDataSet, Size);
 				reader.Open();
 			}
 			else
@@ -199,6 +205,45 @@ namespace RedatamLib
 			extras = GetMissingLabel(extras, "MISSING");
 			extras = GetMissingLabel(extras, "NOTAPPLICABLE");
 			ParseDecimals(extras);
+		}
+
+		public bool FileSizeFails( out long expectedSize,  out long actual)
+		{
+			expectedSize = GetExpectedFileSize();
+			actual = reader.Length;	
+			return expectedSize > actual;
+		}
+
+		private long GetExpectedFileSize()
+		{
+			switch (Type)
+			{
+				case "STRING":
+					return CalculateCharSize();
+				case "INTEGER":
+				case "INT16":
+				case "REAL":
+					return CalculateBitsSize();
+				default:
+					throw new Exception("Unsupported data type: " + Type);
+			}
+		}
+
+		private long CalculateCharSize()
+		{
+			long entityRows = this.entity.RowsCount;
+			long bytes = this.Size * entityRows;
+			return bytes;
+		}
+
+		private long CalculateBitsSize()
+		{
+			long entityRows = this.entity.RowsCount;
+			long bits = (this.Size * entityRows);
+			long bytes = (bits / 8);
+			if (bits % 8 > 0)
+				bytes++;
+			return bytes;
 		}
 	}
 }

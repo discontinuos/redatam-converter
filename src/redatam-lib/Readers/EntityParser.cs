@@ -11,7 +11,7 @@ namespace RedatamLib
 		RedatamDatabase db;
 		string rootPath;
 
-		private static string[] validTypes = { "DBL", "LNG", "INT", "PCK", "CHR" };
+		private static string[] validTypes = { "DBL", "LNG", "INT", "BIN", "PCK", "CHR" };
 
 		public EntityParser(RedatamDatabase db)
 		{

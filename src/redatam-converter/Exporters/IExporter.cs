@@ -15,9 +15,11 @@ namespace RedatamConverter
 		long CurrentEntityTotal { get; set; }
 		long GlobalCurrentRow { get; set; }
 		long EntityCurrentRow { get; set; }
+		long GlobalDataItemsCurrent { get; set; }
+
 		bool Cancelled { get; set; }
 		string[] GetMissingFiles();
-			
+		string[] GetInvalidSizes();			
 
 	}
 }

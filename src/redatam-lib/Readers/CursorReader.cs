@@ -11,17 +11,23 @@ namespace RedatamLib
 		public int BlockSize;
 		public string Filename;
 		public bool IsString;
+		public bool IsBinaryDataSet;
 
 		private FileStream stream;
 		private long fileSize;
 		uint trailingBits = 0;
 		int trailingBitsCount = 0;
 		int bytesPos = 0;
-
-		public CursorReader(string file, bool isString, int size)
+		
+		public CursorReader(string file, int size):
+					this(file, false, false, size)
+		{
+		}
+		public CursorReader(string file, bool isString, bool isBin, int size)
 		{
 			IsString = isString;
 			Filename = file;
+			IsBinaryDataSet = isBin;
 			BlockSize = size;
 		}
 		public void Open()
@@ -54,12 +60,24 @@ namespace RedatamLib
 			data = feedBits(data, ref bitsRead);
 			while (bitsRead < BlockSize)
 			{
-				trailingBits = this.ReadInt32();
+				if (IsBinaryDataSet)
+					trailingBits = this.Read4Bytes();
+				else
+					trailingBits = this.ReadInt32();
 				bytesPos += 4;
 				trailingBitsCount = 32;
 				data = feedBits(data, ref bitsRead);
 			}
 			return data;
+		}
+
+		private uint Read4Bytes()
+		{
+			return Read2Bytes() * 0x10000 + Read2Bytes();
+		}
+		private uint Read2Bytes()
+		{
+			return ReadByte() * 0x100 + ReadByte();
 		}
 
 		private ulong feedBits(ulong data, ref int bitsRead)
@@ -105,9 +123,11 @@ namespace RedatamLib
 			if (ret == -1)
 			{
 				if (stream.Position == stream.Length)
-					throw new Exception("Se ha llegado al final de los datos (final inesperado).");
+				{
+					return 0;
+				}
 				else
-				throw new Exception("No se pudo leer el archivo de origen.");
+					throw new Exception("No se pudo leer el archivo de origen.");
 			}
 			return (uint)ret;
 		}
@@ -121,6 +141,14 @@ namespace RedatamLib
 			}
 	 }
 
+		public uint ReadInt32At(long pos)
+		{
+			long keepPos = stream.Position;
+			stream.Position = pos * 4;
+			uint ret = this.ReadInt32();
+			stream.Position = keepPos;
+			return ret;
+		}
 		public uint ReadLastInt32()
 		{
 			long keepPos = stream.Position;

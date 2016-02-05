@@ -1,5 +1,12 @@
 ﻿[README.md](https://github.com/discontinuos/redatam-converter/blob/master/README.md).
 
+# Versión 1.7 - 2016-01-30
+- Soporte para archivos de datos .bin (previos a .PCK)
+- Limpieza de nombres de variables en la exportación a SPSS para evitar interrupciones por varibles largas o guion bajo al inicio.
+- Verificación del tamaño de los archivos de datos.
+- Mejoras en la estimación del tiempo total.
+- Posibilidad de seleccionar variables a exportar.
+
 # Versión 1.6 - 2015-09-30
 - Soporte para bases de datos con entidades con más de una entidad hija.
 - Test automatizados para validar integridad entre versiones.

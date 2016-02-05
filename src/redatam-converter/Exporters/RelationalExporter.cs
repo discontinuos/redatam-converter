@@ -16,8 +16,9 @@ namespace RedatamConverter
 
 		public string CurrentEntity { get; set; }
 		public long CurrentEntityTotal { get; set; }
-		public long GlobalCurrentRow { get; set; }
 		public long EntityCurrentRow { get; set; }
+		public long GlobalCurrentRow { get; set; }
+		public long GlobalDataItemsCurrent { get; set; }
 		public bool Cancelled { get; set; }
 
 		public string Folder;
@@ -38,10 +39,10 @@ namespace RedatamConverter
 		{
 			Folder = folder;
 			// crea archivos para cada entidad
-			ExportEntities(null, db.Entities);
+			ExportLevel(null, db.Entities);
 		}
 
-		private void ExportEntities(Entity parent, List<Entity> entities)
+		private void ExportLevel(Entity parent, List<Entity> entities)
 		{
 			foreach (Entity e in entities)
 			{
@@ -49,7 +50,7 @@ namespace RedatamConverter
 				T doc = CreateTable(this.Folder, e);
 
 				CreateIdVariables(parent, e, doc);
-				CreateDataVariables(e.Variables, doc);
+				CreateDataVariables(e.SelectedVariables, doc);
 				BeginDataWrite(doc);
 				try
 				{
@@ -59,7 +60,7 @@ namespace RedatamConverter
 				{
 					CloseTable(doc);
 				}
-				ExportEntities(e, e.Children);
+				ExportLevel(e, e.Children);
 			}
 		}
 
@@ -73,13 +74,14 @@ namespace RedatamConverter
 			// abre los archivos para todas las variables
 			OpenVariablesData(e);
 			//
-			this.CurrentEntityTotal = e.GetPointerRows();
+			this.CurrentEntityTotal = e.CalculateRowCount(parentEntity);
 
 			int currentParent = -1;
 			int parentLimit = int.MinValue;
 			int n = 1;
 			EntityCurrentRow = 0;
 			// pone valores
+			int exportVariablesCount = e.SelectedVariables.Count + 2;
 			while (n <= this.CurrentEntityTotal)
 			{
 				AdvanceParentId(e, parentId, ref currentParent, ref parentLimit, n);
@@ -91,7 +93,9 @@ namespace RedatamConverter
 				GlobalCurrentRow++;
 				EntityCurrentRow++;
 
-				if (GlobalCurrentRow % 43 == 0 || n == this.CurrentEntityTotal)
+				GlobalDataItemsCurrent += exportVariablesCount;
+
+				if (GlobalCurrentRow % 143 == 0 || n == this.CurrentEntityTotal)
 				{
 					CallBack(this, null);
 					if (Cancelled)
@@ -115,7 +119,7 @@ namespace RedatamConverter
 				ret[parentId] = currentParent;
 
 			// pone el valor de cada variable
-			foreach (Variable v in e.Variables)
+			foreach (Variable v in e.SelectedVariables)
 			{
 				ret[v.Name] = v.GetData();
 			}
@@ -127,7 +131,7 @@ namespace RedatamConverter
 			if (parent != null)
 				CreateVariable(doc, new Variable(MakeId(parent), "INTEGER", "Parent entity Id"));
 		}
-		protected void CreateDataVariables(List<Variable> list, T doc)
+		protected void CreateDataVariables(IList<Variable> list, T doc)
 		{
 			foreach (Variable v in list)
 				CreateVariable(doc, v);
@@ -156,19 +160,14 @@ namespace RedatamConverter
 		private static void OpenVariablesData(Entity e)
 		{
 			e.OpenPointer();
-			foreach (Variable v in e.Variables)
+			foreach (Variable v in e.SelectedVariables)
 				v.OpenData();
 		}
 		private static void CloseVariablesData(Entity e, Entity parentEntity)
 		{
 			e.ClosePointer();
-			foreach (Variable v in e.Variables)
+			foreach (Variable v in e.SelectedVariables)
 				v.CloseData();
-			if (parentEntity != null)
-			{
-				// inicializa el punter del padre
-				parentEntity.ClosePointer();
-			}
 		}
 
 
@@ -179,12 +178,46 @@ namespace RedatamConverter
 			return ret;
 		}
 
+		public string[] GetInvalidSizes()
+		{
+			List<string> ret = new List<string>();
+			CheckEntityFileSizes(ret, db.Entities, null);
+			return ret.ToArray();
+		}
+
+		private void CheckEntityFileSizes(List<string> ret, List<Entity> entities, Entity parentEntity)
+		{
+			foreach (Entity e in entities)
+			{
+				OpenVariablesData(e);
+				e.CalculateRowCount(parentEntity);
+				foreach (Variable v in e.SelectedVariables)
+				{
+					long expected, actual;
+					if (v.FileSizeFails(out expected, out actual))
+					{
+						string errorText = v.Filename.Replace("'", "") + ": entity '" + e.Name
+																+ "', variable '" + v.Name + "'. Expected: " + expected + " (Actual: " + actual + ").";
+						ret.Add(errorText);
+					}
+				}
+				CheckEntityFileSizes(ret, e.Children, e);
+				CloseVariablesData(e, parentEntity);
+			}
+		}
+
 		public string[] GetMissingFiles()
 		{
 			List<string> ret = new List<string>();
-			foreach (Entity e in db.Entities)
+			CheckEntityFiles(ret, db.Entities);
+			return ret.ToArray();
+		}
+
+		private void CheckEntityFiles(List<string> ret, List<Entity> entities)
+		{
+			foreach (Entity e in entities)
 			{
-				foreach (Variable v in e.Variables)
+				foreach (Variable v in e.SelectedVariables)
 				{
 					if (v.DataFileExists() == false)
 					{
@@ -193,9 +226,8 @@ namespace RedatamConverter
 						ret.Add(errorText);
 					}
 				}
+				CheckEntityFiles(ret, e.Children);
 			}
-			return ret.ToArray();
 		}
-
 	}
 }

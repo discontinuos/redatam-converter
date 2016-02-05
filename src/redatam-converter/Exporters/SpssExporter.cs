@@ -9,15 +9,26 @@ namespace RedatamConverter
 {
 	class SpssExporter : RelationalExporter<SpssDataDocument>
 	{
+
+
 		public SpssExporter(RedatamDatabase dbr)
 			: base(dbr)
 		{ }
 
 		protected override SpssDataDocument CreateTable(string folder, Entity e)
 		{
-			string filename = CreateFilename(folder, e.Name, "sav");
+			string filename = CreateFilename(folder, SanitizeName(e.Name), "sav");
 			SpssDataDocument doc = SpssDataDocument.Create(filename);
 			return doc;
+		}
+
+		private string SanitizeName(string name)
+		{
+			if (name.StartsWith("_"))
+				name = name.Substring(1);
+			if (name.Length > 64)
+				name = name.Substring(0, 64);
+			return name;
 		}
 		protected override void BeginDataWrite(SpssDataDocument doc)
 		{
@@ -46,7 +57,7 @@ namespace RedatamConverter
 				default:
 					throw new Exception("Unsupported type: " + v.Type);
 			}
-			var.Name = v.Name;
+			var.Name = SanitizeName(v.Name);
 			var.Label = v.Label;
 
 			doc.Variables.Add(var);
@@ -84,7 +95,10 @@ namespace RedatamConverter
 			SpssCase case1 = doc.Cases.New();
 
 			foreach (var pair in data)
-				case1[pair.Key] = pair.Value;
+			{
+				string varName = SanitizeName(pair.Key);
+				case1[varName] = pair.Value;
+			}
 
 			case1.Commit();
 		}

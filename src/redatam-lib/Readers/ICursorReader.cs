@@ -14,5 +14,6 @@ namespace RedatamLib
 		string ReadString();
 
 		long Length { get; }
+		uint ReadInt32At(long pos);
 	}
 }
