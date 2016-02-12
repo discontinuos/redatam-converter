@@ -60,6 +60,26 @@ namespace RedatamConverter
 				btnTest.Visible = false;
 				btnRegenTest.Visible = false;
 			#endif
+
+			ProcessCommandLineArguments();
+		}
+
+		private void ProcessCommandLineArguments()
+		{
+			if (Environment.GetCommandLineArgs().Length < 2) return;
+			string cmd = Environment.GetCommandLineArgs()[1].Trim();
+			if (cmd.Length > 0)
+			{
+				if (cmd.StartsWith("\"")) cmd = cmd.Substring(1);
+				if (cmd.EndsWith("\"")) cmd = cmd.Substring(0, cmd.Length - 1);
+				if (File.Exists(cmd) == false)
+					MessageBox.Show(this, "Could not find file: " + cmd, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				else
+				{
+					lblFile.Text = cmd;
+					ProcessDictionary(lblFile.Text);
+				}
+			}
 		}
 
 
@@ -76,6 +96,7 @@ namespace RedatamConverter
 
 			if (userClickedOK == System.Windows.Forms.DialogResult.OK)
 			{
+				folderTo.Text = "...";
 				lblFile.Text = openFileDialog1.FileName;
 				ProcessDictionary(lblFile.Text);
 			}
@@ -543,7 +564,7 @@ namespace RedatamConverter
 			SaveFileDialog fileBrowserDialog1 = new SaveFileDialog();
 			fileBrowserDialog1.DefaultExt = "xml";
 			fileBrowserDialog1.OverwritePrompt = true;
-			fileBrowserDialog1.Filter = "XML file (*.xml)|*.txt|All files (*.*)|*.*";
+			fileBrowserDialog1.Filter = "XML file (*.xml)|*.xml|All files (*.*)|*.*";
 			fileBrowserDialog1.Title = "Select the filename for definitions";
 			if (fileBrowserDialog1.ShowDialog(this) == DialogResult.OK)
 			{

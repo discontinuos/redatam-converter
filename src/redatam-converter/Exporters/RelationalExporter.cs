@@ -189,20 +189,23 @@ namespace RedatamConverter
 		{
 			foreach (Entity e in entities)
 			{
-				OpenVariablesData(e);
-				e.CalculateRowCount(parentEntity);
-				foreach (Variable v in e.SelectedVariables)
+				if (e.DataFileExists())
 				{
-					long expected, actual;
-					if (v.FileSizeFails(out expected, out actual))
+					OpenVariablesData(e);
+					e.CalculateRowCount(parentEntity);
+					foreach (Variable v in e.SelectedVariables)
 					{
-						string errorText = v.Filename.Replace("'", "") + ": entity '" + e.Name
-																+ "', variable '" + v.Name + "'. Expected: " + expected + " (Actual: " + actual + ").";
-						ret.Add(errorText);
+						long expected, actual;
+						if (v.FileSizeFails(out expected, out actual))
+						{
+							string errorText = v.Filename.Replace("'", "") + ": entity '" + e.Name
+																	+ "', variable '" + v.Name + "'. Expected: " + expected + " bytes (Actual: " + actual + " bytes).";
+							ret.Add(errorText);
+						}
 					}
+					CheckEntityFileSizes(ret, e.Children, e);
+					CloseVariablesData(e, parentEntity);
 				}
-				CheckEntityFileSizes(ret, e.Children, e);
-				CloseVariablesData(e, parentEntity);
 			}
 		}
 

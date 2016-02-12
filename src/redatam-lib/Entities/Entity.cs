@@ -52,7 +52,7 @@ namespace RedatamLib
 			//ubica el nombre de archivo y el tamaño de variable
 			if (this.IndexFilename != "")
 			{
-				string file = RedatamDatabase.OptimisticCombine(this.rootPath, this.IndexFilename);
+				string file = ResolveDataFilename();
 				reader = new CursorReader(file, 16);
 			}
 			else
@@ -60,6 +60,14 @@ namespace RedatamLib
 				reader = new NullCursorReader();
 			}
 			reader.Open();
+		}
+
+		private string ResolveDataFilename()
+		{
+			if (this.IndexFilename != "")
+				return RedatamDatabase.OptimisticCombine(this.rootPath, this.IndexFilename);
+			else
+				return "";
 		}
 
 		public bool HasData()
@@ -109,6 +117,13 @@ namespace RedatamLib
 					ret.AddRange(children);
 			}
 			return ret;
+		}
+
+		public bool DataFileExists()
+		{
+			//ubica el nombre de archivo y el tamaño de variable
+			string file = ResolveDataFilename();
+			return File.Exists(file);
 		}
 	}
 }

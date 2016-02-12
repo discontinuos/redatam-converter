@@ -24,6 +24,7 @@ namespace RedatamConverter
 			// exporta la metadata
 			doc = new XmlDocument();
 			List<XObject> content = GetEntitiesNodes(db.Entities);
+			Sign(content);
 			XElement element = new XElement("database", content);
 			File.WriteAllText(filename, element.ToString());
 		}
@@ -31,6 +32,7 @@ namespace RedatamConverter
 		private List<XObject> GetEntitiesNodes(List<Entity> list)
 		{
 			List<XObject> ret = new List<XObject>();
+
 			foreach (Entity entity in list)
 			{
 				XAttribute name = new XAttribute("name", entity.Name);
@@ -48,6 +50,18 @@ namespace RedatamConverter
 				ret.Add(element);
 			}
 			return ret;
+		}
+
+		private static void Sign(List<XObject> ret)
+		{
+			XAttribute name;
+			XAttribute index;
+			List<object> content;
+			name = new XAttribute("name", "Redatam Converter");
+			index = new XAttribute("url", "http://www.aacademica.org/conversor.redatam");
+			content = new List<object>() { name, index };
+			XElement element = new XElement("creator", content);
+			ret.Insert(0, element);
 		}
 
 		private List<XObject> GetVariablesNodes(Entity entity)
