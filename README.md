@@ -20,7 +20,7 @@ La versión actual exporta a formato SPSS nativo y archivos separados por comas 
 
 # Consultas y sugerencias
 
-Para consultas o sugerencias, escribir a pablodg@gmail.com
+Para consultas o sugerencias, escribir a Pablo De Grande (pablodg@gmail.com).
 
 # Requisitos de instalación manual 
 
@@ -32,3 +32,6 @@ La aplicación utiliza el Microsoft Framework .NET 4 (client profile). Esto es u
 SPSS.NET InteropLibrary 
 La aplicación utiliza la librería de SPSS.NET InteropLibrary (https://spss.codeplex.com/) para generar archivos nativos de SPSS como salida. Esta librería no requiere una instalación independiente, pero posiblemente deba copiar los archivos de la carpeta SPSSio a su carpeta c:\windows\System32 (o equivalente... hacer Inicio > Ejecutar > %WINDIR%\SYSTEM32 <enter> puede ser una buena forma de identificar la carpeta System32 de la PC).
   
+# Créditos
+
+El Conversor Redatam fue creado y es mantenido por Pablo De Grande (pablodg@gmail.com) en el marco de la iniciativa [Discontinuos](http://www.aacademica.org/discontinuos). El mismo ha tenido sustanciales mejoras a partir de consultas y sugerencias de los usuarios y de comentarios en el [blog](http://idiscontinuos.wordpress.com/2015/03/21/convirtiendo-bases-redatam-a-spss/). 
