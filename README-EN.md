@@ -1,8 +1,8 @@
 ﻿# REDATAM CONVERTER
 [Spanish Readme Available](https://github.com/discontinuos/redatam-converter/blob/master/README.md).
-Application for extracting information from REDATAM datadatabasess
+Application for extracting raw information from REDATAM databases.
  
-RedatamConverter is an open source project that lets you read Redatam datadatabasess to export their microdata. It was created to recover information of REDATAM databases for statistics analysis using standard tools such as SPSS, STATA, R, etc.
+Redatam Converter is an open source project that lets you read Redatam datadatabasess to export their microdata. It was created to recover information of REDATAM databases for statistics analysis using standard tools such as SPSS, STATA, R, etc.
  
 # DOWNLOADS
 
@@ -28,3 +28,8 @@ The application uses the Microsoft Framework .NET 4 (client profile). This is a 
  
 SPSS.NET InteropLibrary 
 The application uses the library of SPSS.NET InteropLibrary (https://spss.codeplex.com/) to generate native SPSS output files. This library does not require a separate installation, but possibly should copy the files from the SPSSio folder to your C:\Windows\System32 folder.
+
+
+# Credits
+
+The Redatam Converter was created and is supported by Pablo De Grande (pablodg@gmail.com). Many improvements have been made thanks to user's feedback and suggestions made at the [blog](http://idiscontinuos.wordpress.com/2015/03/21/convirtiendo-bases-redatam-a-spss/). 
