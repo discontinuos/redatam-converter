@@ -6,7 +6,7 @@ Redatam Converter is an open source project that lets you read Redatam datadatab
  
 # DOWNLOADS
 
-Download: [Windows 32-bit Setup](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true) (8.74MB)
+Download: [Windows 32/64-bit Setup](https://github.com/discontinuos/redatam-converter/blob/master/release/setup-win32.exe?raw=true) (8.74MB)
 
 # HISTORY
 
@@ -30,6 +30,6 @@ SPSS.NET InteropLibrary
 The application uses the library of SPSS.NET InteropLibrary (https://spss.codeplex.com/) to generate native SPSS output files. This library does not require a separate installation, but possibly should copy the files from the SPSSio folder to your C:\Windows\System32 folder.
 
 
-# Credits
+# CREDITS
 
 The Redatam Converter was created and is supported by Pablo De Grande (pablodg@gmail.com). Many improvements have been made thanks to user's feedback and suggestions made at the [blog](http://idiscontinuos.wordpress.com/2015/03/21/convirtiendo-bases-redatam-a-spss/). 
