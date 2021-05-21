@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedatamConverter", "redatam-converter\RedatamConverter.csproj", "{651134AF-27A2-4AD9-B11F-879F278A9204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedatamLib", "redatam-lib\RedatamLib.csproj", "{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|x86 = CD_ROM|x86
+		Debug|x86 = Debug|x86
+		DVD-5|x86 = DVD-5|x86
+		Release|x86 = Release|x86
+		SingleImage|x86 = SingleImage|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.CD_ROM|x86.ActiveCfg = Release|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.CD_ROM|x86.Build.0 = Release|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.Debug|x86.ActiveCfg = Debug|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.Debug|x86.Build.0 = Debug|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.DVD-5|x86.ActiveCfg = Debug|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.DVD-5|x86.Build.0 = Debug|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.Release|x86.ActiveCfg = Release|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.Release|x86.Build.0 = Release|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.SingleImage|x86.ActiveCfg = Release|x86
+		{651134AF-27A2-4AD9-B11F-879F278A9204}.SingleImage|x86.Build.0 = Release|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.CD_ROM|x86.ActiveCfg = Release|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.CD_ROM|x86.Build.0 = Release|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.Debug|x86.ActiveCfg = Debug|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.Debug|x86.Build.0 = Debug|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.DVD-5|x86.ActiveCfg = Debug|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.DVD-5|x86.Build.0 = Debug|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.Release|x86.ActiveCfg = Release|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.Release|x86.Build.0 = Release|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.SingleImage|x86.ActiveCfg = Release|x86
+		{EF9372FE-A75A-474D-ACEE-5BE0C7D0BD23}.SingleImage|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {664F2321-7CF7-475E-A213-256D0A9FCC37}
+	EndGlobalSection
+EndGlobal
