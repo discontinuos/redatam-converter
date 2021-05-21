@@ -11,11 +11,13 @@ namespace RedatamLib
 		public List<Entity> entityNames = new List<Entity>();
 		public readonly List<Entity> Entities = new List<Entity>();
 		public FuzzyEntityParser FuzzyEntityParser;
+		public XmlEntityParser XmlEntityParser;
 		public string DictionaryFile; 
 
 		public RedatamDatabase()
 		{
 			FuzzyEntityParser = new FuzzyEntityParser(this);
+			XmlEntityParser = new XmlEntityParser(this);
 		}
 
 
@@ -73,22 +75,31 @@ namespace RedatamLib
 		{
 			try
 			{
-				this.FuzzyEntityParser.ParseEntities(file);
+				var ext = Path.GetExtension(file).ToLower();
+				if (ext == ".dic")
+				{
+					this.FuzzyEntityParser.ParseEntities(file);
+					// Parse de entidades y variables
+					try
+					{
+						EntityParser parser = new EntityParser(this);
+						parser.Parse(file);
+					}
+					catch (Exception e)
+					{
+						throw new Exception("An error ocurred while parsing the dictionary variables and labels (" + e.Message + ").");
+					}
+				}
+				else if (ext == ".dicx")
+					this.XmlEntityParser.Parse(file);
+				else
+					throw new Exception("Dictionary files must by .dic or .dicx files.");
 			}
 			catch (Exception e)
 			{
 				throw new Exception("An error ocurred while discovering the dictionary entities (" + e.Message + ").");
 			}
-			// Parse de entidades y variables
-			try
-			{
-				EntityParser parser = new EntityParser(this);
-				parser.Parse(file);
-			}
-			catch (Exception e)
-			{
-				throw new Exception("An error ocurred while parsing the dictionary variables and labels (" + e.Message + ").");
-			}
+	
 		}
 
 		public List<Entity> GetEntitiesList()

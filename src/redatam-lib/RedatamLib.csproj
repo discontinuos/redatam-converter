@@ -26,12 +26,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>
@@ -54,6 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\DatabaseEntry.cs" />
+    <Compile Include="Entities\ValueLabel.cs" />
+    <Compile Include="Readers\DOSEncoder.cs" />
+    <Compile Include="Readers\XmlVariableParser.cs" />
+    <Compile Include="Readers\VariableParser.cs" />
+    <Compile Include="Readers\XmlEntityParser.cs" />
     <Compile Include="Readers\NullCursorReader.cs" />
     <Compile Include="Readers\ICursorReader.cs" />
     <Compile Include="Readers\IniSection.cs" />

@@ -27,6 +27,12 @@ namespace RedatamLib
 			Dictionary<string, DataBlock> dataParts = SplitDataBlocks(dataBlock, db.entityNames);
 
 			db.Entities.AddRange(ParseEntities(null, db.entityNames, dataParts));
+
+			MsDOSEncoder enc = new MsDOSEncoder(db);
+			if (enc.RequiresProcessing())
+			{
+				enc.ReencodeLabels();
+			}
 		}
 
 		public List<Entity> ParseEntities(Entity parent, List<Entity> entitiesNames, Dictionary<string, DataBlock> dataParts)
@@ -103,9 +109,10 @@ namespace RedatamLib
 			v.Label = dataBlock.eatShortString();
 			v.Group = dataBlock.eatShortString();
 
-			v.ParseDeclaration();
-			v.ParseValueLabels();
-			v.ParseMissingAndPrecision();
+			var parser = new VariableParser(v);
+			parser.ParseDeclaration();
+			parser.ParseValueLabels();
+			parser.ParseMissingAndPrecision();
 			return v;
 		}
 

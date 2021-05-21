@@ -87,7 +87,7 @@ namespace RedatamConverter
 		{
 			OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-			openFileDialog1.Filter = "REDATAM dictionary (.dic)|*.dic|All Files (*.*)|*.*";
+			openFileDialog1.Filter = "REDATAM dictionaries (.dic, .dicx)|*.dic;*.dicx|All Files (*.*)|*.*";
 			openFileDialog1.FilterIndex = 1;
 
 			openFileDialog1.Multiselect = true;
@@ -584,6 +584,7 @@ namespace RedatamConverter
 				Cursor.Current = Cursors.WaitCursor;
 				ExportDicOutput(path, outpath);
 				Cursor.Current = Cursors.Default;
+				var success = true;
 				// compara
 				foreach (string file in Directory.GetFiles(outpath, "*.xml"))
 				{
@@ -591,10 +592,13 @@ namespace RedatamConverter
 					if (File.ReadAllText(file) != File.ReadAllText(targetFile))
 					{
 						MessageBox.Show(this, "Test failed. File: " + Path.GetFileName(file), "Done");
-						return;
+						success = false;
 					}
 				}
-				MessageBox.Show(this, "All tests run successfully", "Done");
+				if (success)
+				{
+					MessageBox.Show(this, "All tests run successfully", "Done");
+				}
 			}
 			catch (Exception ex)
 			{

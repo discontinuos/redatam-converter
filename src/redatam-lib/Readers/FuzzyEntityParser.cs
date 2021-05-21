@@ -79,7 +79,8 @@ namespace RedatamLib
 			if (dataBlock.eatPlausibleString(out indexfilename, false) == false)
 				return false;
 			return description.EndsWith(".ptr") || 
-				indexfilename.EndsWith(".ptr");
+				indexfilename.EndsWith(".ptr") || description.EndsWith(".PTR") || 
+				indexfilename.EndsWith(".PTR");
 		}
 
 

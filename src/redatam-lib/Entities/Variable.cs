@@ -29,83 +29,14 @@ namespace RedatamLib
 		public string Declaration;
 		public string Group;
 		public string ValuesLabelsRaw;
-		public List<KeyValuePair<string, string>> ValueLabels = new List<KeyValuePair<string, string>>();
+		public List<ValueLabel> ValueLabels = new List<ValueLabel>();
 		public string Filter;
 		public int Size;
 		public string Filename;
-		private bool BinaryDataSet = false;
+		public bool BinaryDataSet = false;
 		public bool Selected = true;
 
-		public void ParseValueLabels()
-		{
-			string[] items = ValuesLabelsRaw.Split(new char[] { '\t' },StringSplitOptions.RemoveEmptyEntries);
-			ValueLabels.Clear();
-			if (ValuesLabelsRaw == "") return;
-			foreach (string item in items)
-			{
-				int i = item.IndexOf(" ");
-				if (i == -1) break;
-				string part1 = item.Substring(0, i);
-				string part2 = item.Substring(i+1);
-				int x;
-				if (int.TryParse(part1, out x) == false)
-				{
-					ValueLabels.Add(new KeyValuePair<string,string>(
-						"0",
-						item));
-				}
-				else
-					ValueLabels.Add(new KeyValuePair<string,string>(
-						part1,
-						part2 ));
-			}
-		}
 
-		private void ParseDecimals(string extras)
-		{
-			if (extras.StartsWith("DECIMALS "))
-			{
-				string label = eatStringFromString(ref extras);
-				string value = eatStringFromString(ref extras);
-				this.Decimals = int.Parse(value);
-			}
-		}
-
-		private string GetMissingLabel(string extras, string tag)
-		{
-			if (extras.StartsWith(tag))
-			{
-				string label = eatStringFromString(ref extras);
-				string value = eatStringFromString(ref extras);
-				ValueLabels.Add(new KeyValuePair<string, string>(
-					value,
-					label));
-			}
-			return extras;
-		}
-
-		private string eatStringFromString(ref string extras)
-		{
-			if (extras.StartsWith("'"))
-			{
-				int nEnd = extras.IndexOf("'", 1);
-				if (nEnd != -1)
-				{
-					string retQ = extras.Substring(1, nEnd - 1);
-					extras = extras.Substring(nEnd + 1).TrimStart();
-					return retQ;
-				}
-			}
-
-			int n = extras.IndexOf(" ");
-			if (n == -1) n = extras.Length;
-			string ret = extras.Substring(0, n);
-			if (n < extras.Length)
-				extras = extras.Substring(n + 1);
-			else
-				extras = "";
-			return ret;
-		}
 		public override string ToString()
 		{
 			return this.Name;
@@ -127,46 +58,44 @@ namespace RedatamLib
 					throw new Exception("Unsupported data type: " + Type);
 			}
 		}
-
-		public void ParseDeclaration()
+		
+		private long CalculateCharSize()
 		{
-			string info = this.Declaration;
-			string dataset = eatStringFromString(ref info);
-			string type = eatStringFromString(ref info);
-			string fileRaw = eatStringFromString(ref info);
-			string sizeLabel = eatStringFromString(ref info);
-			string size = eatStringFromString(ref info);
+			long entityRows = this.entity.RowsCount;
+			long bytes = this.Size * entityRows;
+			return bytes;
+		}
 
-			if (this.Type == "STRING" && type != "CHR")
-				throw new Exception("Inconsistent type declaration");
-			if (this.Type == "REAL" && type != "DBL")
-				throw new Exception("Inconsistent type declaration");
-			switch (type)
+		private long CalculateBitsSize()
+		{
+			long entityRows = this.entity.RowsCount;
+			long bits = (this.Size * entityRows);
+			long bytes = (bits / 8);
+			if (bits % 8 > 0)
+				bytes++;
+			return bytes;
+		}
+
+		private long GetExpectedFileSize()
+		{
+			switch (Type)
 			{
-				// si se agregan tipos nuevos, incorporarlos en 
-				// entityParser => validTypes
-				case "DBL":
-					this.Size = 64;
-					break;
-				case "LNG":
-					this.Size = 32;
-					break;
-				case "INT":
-					this.Size = 16;
-					this.Type = "INT16";
-					break;
-				case "BIN":
-					this.Size = int.Parse(size);
-					this.BinaryDataSet = true;
-					break;
-				case "PCK":
-				case "CHR":
-					this.Size = int.Parse(size);
-					break;
+				case "STRING":
+					return CalculateCharSize();
+				case "INTEGER":
+				case "INT16":
+				case "REAL":
+					return CalculateBitsSize();
 				default:
-					throw new Exception("Data type '" + type + "' is not supported. Contact idiscontinuos for support.");
+					throw new Exception("Unsupported data type: " + Type);
 			}
-			this.Filename = fileRaw;
+		}
+
+		public bool FileSizeFails( out long expectedSize,  out long actual)
+		{
+			expectedSize = GetExpectedFileSize();
+			actual = reader.Length;	
+			return expectedSize > actual;
 		}
 
 		public void OpenData()
@@ -198,52 +127,5 @@ namespace RedatamLib
 			reader.Close();
 		}
 
-		public void ParseMissingAndPrecision()
-		{
-			// se fija si hay missing y na
-			string extras = this.Group.Trim();
-			extras = GetMissingLabel(extras, "MISSING");
-			extras = GetMissingLabel(extras, "NOTAPPLICABLE");
-			ParseDecimals(extras);
-		}
-
-		public bool FileSizeFails( out long expectedSize,  out long actual)
-		{
-			expectedSize = GetExpectedFileSize();
-			actual = reader.Length;	
-			return expectedSize > actual;
-		}
-
-		private long GetExpectedFileSize()
-		{
-			switch (Type)
-			{
-				case "STRING":
-					return CalculateCharSize();
-				case "INTEGER":
-				case "INT16":
-				case "REAL":
-					return CalculateBitsSize();
-				default:
-					throw new Exception("Unsupported data type: " + Type);
-			}
-		}
-
-		private long CalculateCharSize()
-		{
-			long entityRows = this.entity.RowsCount;
-			long bytes = this.Size * entityRows;
-			return bytes;
-		}
-
-		private long CalculateBitsSize()
-		{
-			long entityRows = this.entity.RowsCount;
-			long bits = (this.Size * entityRows);
-			long bytes = (bits / 8);
-			if (bits % 8 > 0)
-				bytes++;
-			return bytes;
-		}
 	}
 }

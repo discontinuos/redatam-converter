@@ -1,6 +1,10 @@
-﻿[README-EN.md](https://github.com/discontinuos/redatam-converter/blob/master/README-EN.md).
+[README-EN.md](https://github.com/discontinuos/redatam-converter/blob/master/README-EN.md).
 
-# Versión 1.7 - 2016-01-30
+# Version 2.0 - 2021-05-21
+- Support for .dicx diccionaries (Redatam 7)
+- Support for old dicionaries with labels encoded in CP 850 (MsDos).
+
+# Version 1.7 - 2016-01-30
 - Support for .bin data files (older than .PCK)
 - Sanitize variables names on SPSS export to avoid errores on long variables names or underscores.
 - Checks for the size of data files.

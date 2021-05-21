@@ -234,7 +234,7 @@
 			this.btnOpen.Name = "btnOpen";
 			this.btnOpen.Size = new System.Drawing.Size(100, 23);
 			this.btnOpen.TabIndex = 4;
-			this.btnOpen.Text = "Open .dic ...";
+			this.btnOpen.Text = "Open .dic/.dicx ...";
 			this.btnOpen.UseVisualStyleBackColor = true;
 			this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
 			// 
