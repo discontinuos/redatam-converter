@@ -15,7 +15,7 @@ The log for changes can be seen at [history record](https://github.com/discontin
 
 # COMPATIBILITY
  
-The converter was tested with REDATAM databases in different versions, trying to be compatible with changes that may have occurred over time. The oldest test was performed with a databases that was distributed along with REDATAM 2.3.0.5 (year 2003) while the most recent was a version 2.5.7.0 (year 2012). Versions 1.4 and 1.5 were adjusted from dictionaries from censuses of 1963 from Uruguay and of 1991 from Argentina.
+The converter was tested with REDATAM databases in different versions, trying to be compatible with changes that may have occurred over time. For the first version of the Converter the oldest test was performed with a databases that was distributed along with REDATAM 2.3.0.5 (year 2003) while the most recent was a version 2.5.7.0 (year 2012). Versions 1.4 and 1.5 were adjusted from dictionaries from censuses of 1963 from Uruguay and of 1991 from Argentina. The Version 2.0 supports .dicx diccionaries of Redatam 7 and adds supports dicionaries with labels encoded using CP850 (MSDOS) based on the dictionary of the 1992 census of Chile.
  
 The current version exports to SPSS native format and to comma separated files (CSV). 
  
