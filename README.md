@@ -14,7 +14,7 @@ Puede consultar aquí el [historial de versiones](https://github.com/discontinuo
 
 # Compatibilidad
 
-El conversor fue probado con bases de REDATAM en diferentes versiones, intentando ser compatible con cambios que pudieran haber ocurrido en el tiempo. La prueba más antigua se realizó con una base que se distribuyó junto con REDATAM  2.3.0.5 (año 2003) mientras que la más reciente fue una versión 2.5.7.0 (año 2012). Las versiones 1.4 y 1.5 fueron ajustadas a partir de diccionarios de censos de Uruguay de 1963 y de Argentina de 1991.
+El conversor fue probado con bases de REDATAM en diferentes versiones, intentando ser compatible con cambios que pudieran haber ocurrido en el tiempo. En la primera versión del Conversor, la prueba más antigua se realizó con una base que se distribuyó junto con REDATAM  2.3.0.5 (año 2003) mientras que la más reciente fue una versión 2.5.7.0 (año 2012). Las versiones 1.4 y 1.5 fueron ajustadas a partir de diccionarios de censos de Uruguay de 1963 y de Argentina de 1991. La versión 2.0 es compatibles con los diccionarios de Redatam 7, y se ajustó su lectura para reconocer etiquetas codificadas en CP850 (MSDOS) a partir de un diccionario del censo de Chile de 1992. 
 
 La versión actual exporta a formato SPSS nativo y archivos separados por comas (CSV). 
 
